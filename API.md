@@ -6,9 +6,11 @@
 
 #### 2.创建NFT接口
 > 2.1上传图片到ipfs接口
+
 image上传成功，得到图片的url
 
-2.2上传NFT json数据到ipfs接口
+> 2.2上传NFT json数据到ipfs接口
+
 upload json data:
 ```json
 {
@@ -24,7 +26,8 @@ upload json data:
 https://ipfs.gateway.io/1234566sdfahfd8954574sfa
 
 
-2.3调用合约方法创建nft
+> 2.3调用合约方法创建nft
+
 调用合约方法参数包含：
 ```json
   {
@@ -39,9 +42,13 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
 
 
 #### 3.编辑自己的NFT信息
-3.1上传图片到ipfs接口 同2.1
-3.2上传NFT json数据到ipfs接口 同2.2
-3.3调用合约方法编辑nft（x,y,w,h）这4个值是不可以变的
+
+> 3.1上传图片到ipfs接口 同2.1
+
+> 3.2上传NFT json数据到ipfs接口 同2.2
+
+> 3.3调用合约方法编辑nft（x,y,w,h）这4个值是不可以变的
+
 调用合约方法参数包含：
 ```json
   {
@@ -52,7 +59,9 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
 
 
 #### 4.获取全部NFT信息接口
-4.1通过合约中的方法获取所有的NFT信息
+
+> 4.1通过合约中的方法获取所有的NFT信息
+
 输入参数：合约地址
 输出：
 ```json
@@ -73,7 +82,7 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
     }
 ]
 ```
-4.2通过nft.url获取nft信息json数据
+> 4.2通过nft.url获取nft信息json数据
 ```json
 {
     "type":"scenery",
@@ -85,7 +94,7 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
 }
 ```
 
-4.3通过json中的图片url，获取图片
+> 4.3通过json中的图片url，获取图片
 
 
 
@@ -95,15 +104,21 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
 
 
 #### 6.NFT市场，可以根据类型筛选
-6.1通过合约中的方法获取所有的NFT信息（同4.1）
-6.2通过nft.url获取json数据（同4.2） 然后根据json中的类型筛选NFT
-6.3通过json中的图片url，获取图片（同4.1）
+> 6.1通过合约中的方法获取所有的NFT信息（同4.1）
+
+> 6.2通过nft.url获取json数据（同4.2） 然后根据json中的类型筛选NFT
+
+> 6.3通过json中的图片url，获取图片（同4.1）
+
 
 
 #### 7.查询地址的NFT信息
-7.1通过合约中的方法获取address下的所有NFT
-7.2通过nft.url获取json数据（同4.2）
-7.3通过json中的图片url，获取图片（同4.1）
+> 7.1通过合约中的方法获取address下的所有NFT
+
+> 7.2通过nft.url获取json数据（同4.2）
+
+> 7.3通过json中的图片url，获取图片（同4.1）
+
 
 
 
@@ -115,7 +130,7 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
 
 
 #### 10.获取nft.id的详情，包括历史交易信息
-10.1 通过ID，获取NFT链上数据详情
+> 10.1 通过ID，获取NFT链上数据详情
 ```json
   {
         "id":"0x01",
@@ -141,7 +156,7 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
         ]
     }
 ```
-10.2通过url获取NFT信息json
+> 10.2通过url获取NFT信息json
 ```json
 {
     "type":"scenery",

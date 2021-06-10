@@ -5,12 +5,12 @@
 需要知道合约地址，及其合约方法
 
 #### 2.创建NFT接口
-> 2.1上传图片到ipfs接口
-
+> 2.1上传图片到ipfs接口  
+参考：https://pinata.cloud/documentation#PinFileToIPFS  
 image上传成功，得到图片的url
 
 > 2.2上传NFT json数据到ipfs接口
-
+参考：https://pinata.cloud/documentation#PinJSONToIPFS
 upload json data:
 ```json
 {
@@ -18,12 +18,12 @@ upload json data:
     "title":"Title here for nFT",
     "url":"https://www.google.com",
     "introduction":"The global leader connecting brands with video games, apps, and VR/AR. Epik brings to life unique collaborations inside of digital platforms delivering an experience that users love. ",
-    "imageUrl":"https://ipfs.gateway.io/wervfre6sdfahfd8954sdf4sfa",
-    "imageSketchUrl":"https://ipfs.gateway.io/12sdew66sdfahfsdf574sfa"
+    "imageUrl":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
+    "imageSketchUrl":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL"
 }
 ```
 返回值：
-https://ipfs.gateway.io/1234566sdfahfd8954574sfa
+https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 
 
 > 2.3调用合约方法创建nft
@@ -31,7 +31,7 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
 调用合约方法参数包含：
 ```json
   {
-        "url":"https://ipfs.gateway.io/1234566sdfahfd8954574sfa",
+        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
         "left":100,
         "top":100,
         "width":200,
@@ -52,7 +52,7 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
 调用合约方法参数包含：
 ```json
   {
-        "url":"https://ipfs.gateway.io/1xxxxx66sdfahfd89lsjfksfa",
+        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
         "price":""
     }
 ```
@@ -68,7 +68,7 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
 [
     {
         "id":"0x01",
-        "url":"https://ipfs.gateway.io/1234566sdfahfd8954574sfa",
+        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
         "owner":"0x8073dfe92b13efb94f187537008e47fda5215262",
         "left":100,
         "top":100,
@@ -89,8 +89,8 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
     "title":"Title here for nFT",
     "url":"https://www.google.com",
     "introduction":"The global leader connecting brands with video games, apps, and VR/AR. Epik brings to life unique collaborations inside of digital platforms delivering an experience that users love. ",
-    "imageUrl":"https://ipfs.gateway.io/wervfre6sdfahfd8954sdf4sfa",
-    "imageSketchUrl":"https://ipfs.gateway.io/12sdew66sdfahfsdf574sfa"
+    "imageUrl":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
+    "imageSketchUrl":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL"
 }
 ```
 
@@ -140,7 +140,7 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
 ```json
   {
         "id":"0x01",
-        "url":"https://ipfs.gateway.io/1234566sdfahfd8954574sfa",
+        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
         "owner":"0x8073dfe92b13efb94f187537008e47fda5215262",
         "left":100,
         "top":100,
@@ -169,8 +169,8 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
     "title":"Title here for nFT",
     "url":"https://www.google.com",
     "introduction":"The global leader connecting brands with video games, apps, and VR/AR. Epik brings to life unique collaborations inside of digital platforms delivering an experience that users love. ",
-    "imageUrl":"https://ipfs.gateway.io/wervfre6sdfahfd8954sdf4sfa",
-    "imageSketchUrl":"https://ipfs.gateway.io/12sdew66sdfahfsdf574sfa"
+    "imageUrl":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
+    "imageSketchUrl":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL"
 }
 ```
 

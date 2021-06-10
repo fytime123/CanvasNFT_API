@@ -43,9 +43,9 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
 
 #### 3.编辑自己的NFT信息
 
-> 3.1上传图片到ipfs接口 同2.1
+> 3.1上传图片到ipfs接口 (同2.1)
 
-> 3.2上传NFT json数据到ipfs接口 同2.2
+> 3.2上传NFT json数据到ipfs接口 (同2.2)
 
 > 3.3调用合约方法编辑nft（x,y,w,h）这4个值是不可以变的
 
@@ -108,7 +108,7 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
 
 > 6.2通过nft.url获取json数据（同4.2） 然后根据json中的类型筛选NFT
 
-> 6.3通过json中的图片url，获取图片（同4.1）
+> 6.3通过json中的图片url，获取图片（同4.3）
 
 
 
@@ -117,7 +117,7 @@ https://ipfs.gateway.io/1234566sdfahfd8954574sfa
 
 > 7.2通过nft.url获取json数据（同4.2）
 
-> 7.3通过json中的图片url，获取图片（同4.1）
+> 7.3通过json中的图片url，获取图片（同4.3）
 
 
 

@@ -171,7 +171,7 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
         {
             "poolName":"CANVAS-BUSD POOL",
             "iconUrl":"https://xxxxx.com/icon/BUSDPool.jpg",
-            "introduction":"We encourge hodlers to stake their LP token to earn more CANVAS.Simply add CANVAS-BNB LP via Pancakeswap",
+            "introduction":"We encourge hodlers to stake their LP token to earn more CANVAS.Simply add CANVAS-BUSD LP via Pancakeswap",
             "apr":"600.0",
             "tvl":"385006000",
             "stakedBalance":"1000.0",
@@ -180,7 +180,7 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
         {
             "poolName":"CANVAS POOL",
             "iconUrl":"https://xxxxx.com/icon/BUSDPool.jpg",
-            "introduction":"We encourge hodlers to stake their LP token to earn more CANVAS.Simply add CANVAS-BNB LP via Pancakeswap",
+            "introduction":"We encourge hodlers to stake their LP token to earn more CANVAS.Simply add CANVAS LP via Pancakeswap",
             "apr":"510.0",
             "tvl":"39610600",
             "stakedBalance":"1000.0",

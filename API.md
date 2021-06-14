@@ -1,6 +1,6 @@
 ## Liberty.Finance NFT API
 --------
-### 1.Pixel销售页面信息
+### 1.Pixel销售页面信息（Wayne）
 > 1.1 剩余和已销售信息 + Key Metrics信息  
 
 从服务端获取数据为：
@@ -24,7 +24,7 @@
 输入参数：fromAddress,pixel数量
 需要知道合约地址，及其合约方法
 
-### 2.创建NFT接口
+### 2.创建NFT接口（尔衡/浩洋）
 > 2.1上传图片到ipfs接口  
 
 参考：https://pinata.cloud/documentation#PinFileToIPFS  
@@ -65,7 +65,7 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 ```
 
 
-### 3.编辑自己的NFT信息
+### 3.编辑自己的NFT信息（尔衡/浩洋）
 
 > 3.1上传图片到ipfs接口 (同2.1)
 
@@ -82,7 +82,7 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 ```
 
 
-### 4.获取全部NFT信息接口
+### 4.获取全部NFT信息接口（尔衡/浩洋）
 
 > 4.1通过合约中的方法获取所有的NFT信息
 
@@ -122,12 +122,12 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 
 
 
-### 5.购买NFT
+### 5.购买NFT（尔衡/浩洋）
 输入参数：nft.id,fromAddress,合约地址
 
 
 
-### 6.NFT市场，可以根据类型筛选
+### 6.NFT市场，可以根据类型筛选（尔衡/浩洋）
 > 6.1通过合约中的方法获取所有的NFT信息（同4.1）
 
 > 6.2通过nft.url获取json数据（同4.2） 然后根据json中的类型筛选NFT
@@ -136,7 +136,7 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 
 
 
-### 7.查询地址的NFT信息
+### 7.查询地址的NFT信息（尔衡/浩洋）
 > 7.1通过合约中的方法获取address下的所有NFT
 
 > 7.2通过nft.url获取json数据（同4.2）
@@ -146,11 +146,11 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 
 
 
-### 8.canvas余额，pixel余额
+### 8.canvas余额，pixel余额（Wayne）
 
 
 
-### 9.挖矿接口
+### 9.挖矿接口（Wayne）
 > 9.1获取当前矿池apy  
 从服务端获取数据：
 ```json
@@ -198,7 +198,7 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 
 
 
-### 10.获取nft.id的详情，包括历史交易信息
+### 10.获取nft.id的详情，包括历史交易信息（尔衡/浩洋）
 > 10.1 通过ID，获取NFT链上数据详情
 ```json
   {
@@ -241,7 +241,7 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 ### 11.用户投票要求隐藏图片显示
 
 
-### 12.用户的favorite
+### 12.用户的favorite（Wayne）
 >  12.1市场中favorite数据获取  
 
 >  12.2用户地址的favorite数据获取  

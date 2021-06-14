@@ -2,6 +2,7 @@
 --------
 ### 1.Pixel销售页面信息
 > 1.1 剩余和已销售信息 + Key Metrics信息  
+
 从服务端获取数据为：
 ```json
 {
@@ -19,11 +20,13 @@
 ```
 
 > 1.2购买Pixel合约接口  
+
 输入参数：fromAddress,pixel数量
 需要知道合约地址，及其合约方法
 
 ### 2.创建NFT接口
 > 2.1上传图片到ipfs接口  
+
 参考：https://pinata.cloud/documentation#PinFileToIPFS  
 
 image上传成功，得到图片的url

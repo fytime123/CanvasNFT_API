@@ -151,7 +151,44 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 
 
 ### 9.挖矿接口
-> 9.1获取当前矿池apy
+> 9.1获取当前矿池apy  
+从服务端获取数据：
+```json
+{
+    "currentCANVASPrice":"1.0",
+    "totalValueLocked":"1.0E7",
+    "circulatingCANVAS":"100000.0",
+    "pools":[
+        {
+            "poolName":"CANVAS-BNB POOL",
+            "iconUrl":"https://xxxxx.com/icon/bnbPool.jpg",
+            "introduction":"We encourge hodlers to stake their LP token to earn more CANVAS.Simply add CANVAS-BNB LP via Pancakeswap",
+            "apr":"600.0",
+            "tvl":"3.10006E8",
+            "stakedBalance":"1000.0",
+            "earnedCANVAS":"2.0"
+        },
+        {
+            "poolName":"CANVAS-BUSD POOL",
+            "iconUrl":"https://xxxxx.com/icon/BUSDPool.jpg",
+            "introduction":"We encourge hodlers to stake their LP token to earn more CANVAS.Simply add CANVAS-BNB LP via Pancakeswap",
+            "apr":"600.0",
+            "tvl":"3.85006E8",
+            "stakedBalance":"1000.0",
+            "earnedCANVAS":"2.0"
+        },
+        {
+            "poolName":"CANVAS POOL",
+            "iconUrl":"https://xxxxx.com/icon/BUSDPool.jpg",
+            "introduction":"We encourge hodlers to stake their LP token to earn more CANVAS.Simply add CANVAS-BNB LP via Pancakeswap",
+            "apr":"510.0",
+            "tvl":"3.96106E8",
+            "stakedBalance":"1000.0",
+            "earnedCANVAS":"2.0"
+        }
+    ]
+}
+```
 
 > 9.2抵押代币
 

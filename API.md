@@ -63,8 +63,20 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
         "price":""
     }
 ```
+测试网合约地址:https://ropsten.etherscan.io/address/0x4816118310F1453d3A29Bb9Af17bA3B39dC297c7#code
 
-
+方法: mint(address to, string memory _tokenURI, uint256 index, uint256 startX, uint256 startY, uint256 xLength, uint256 yLength)
+参数:
+```json
+  {
+        "_tokenURI":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
+        "index":0, (广告牌编号 默认值0)
+        "startX":100,(NFT左上角x坐标)
+        "startY":100,(NFT左上角y坐标)
+        "xLength":200,(NFT宽度)
+        "yLength":100,(NFT高度)
+    }
+```
 ### 3.编辑自己的NFT信息（尔衡/浩洋）
 
 > 3.1上传图片到ipfs接口 (同2.1)
@@ -80,7 +92,9 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
         "price":""
     }
 ```
+测试网合约地址:https://ropsten.etherscan.io/address/0x4816118310F1453d3A29Bb9Af17bA3B39dC297c7#code
 
+方法: setTokenURI(uint256 tokenId, string memory tokenURI)
 
 ### 4.获取全部NFT信息接口（尔衡/浩洋）
 
@@ -125,6 +139,12 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 ### 5.购买NFT（尔衡/浩洋）
 输入参数：nft.id,fromAddress,合约地址
 
+测试网合约地址:  https://ropsten.etherscan.io/address/0x941CbE144eE720Cf99A37ab2eFD738148D517685#code
+
+购买NFT 方法：buyToken(uint256 _tokenId)
+
+卖NFT（设置价格,挂单）方法: readyToSellToken(uint256 _tokenId, uint256 _price)
+取消卖单 方法: CancelSellToken(uint256 _tokenId)
 
 
 ### 6.NFT市场，可以根据类型筛选（尔衡/浩洋）

@@ -94,7 +94,8 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 ```
 测试网合约地址:https://ropsten.etherscan.io/address/0x4816118310F1453d3A29Bb9Af17bA3B39dC297c7#code
 
-方法: setTokenURI(uint256 tokenId, string memory tokenURI)
+方法: setTokenURI(uint256 tokenId, string memory tokenURI, bool blur)
+    blur传flase
 
 ### 4.获取全部NFT信息接口（尔衡/浩洋）
 

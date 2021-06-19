@@ -63,7 +63,7 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
         "price":""
     }
 ```
-测试网合约地址:https://ropsten.etherscan.io/address/0x4816118310F1453d3A29Bb9Af17bA3B39dC297c7#code
+测试网合约地址: https://ropsten.etherscan.io/address/0x2BaF539bC0916D600bC314E302A926ff53F2Af64#code
 
 方法: mint(address to, string memory _tokenURI, uint256 index, uint256 startX, uint256 startY, uint256 xLength, uint256 yLength)
 参数:
@@ -92,7 +92,7 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
         "price":""
     }
 ```
-测试网合约地址:https://ropsten.etherscan.io/address/0x4816118310F1453d3A29Bb9Af17bA3B39dC297c7#code
+测试网合约地址:https://ropsten.etherscan.io/address/0x2BaF539bC0916D600bC314E302A926ff53F2Af64#code
 
 方法: setTokenURI(uint256 tokenId, string memory tokenURI, bool blur)
     blur传flase

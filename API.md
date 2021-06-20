@@ -185,7 +185,7 @@ Example Query:
 Example Query:
 ```graphql
 {
-  canvasNFTs(where: { owner: $地址转换为bytes  }){
+  canvasNFTs(where: { owner: "0x799621c508498bb0a6482b6596a3a2e908bcbbba" }){
     id
     tokenId
     index

@@ -121,6 +121,28 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
     }
 ]
 ```
+访问Subgraph:  https://api.thegraph.com/subgraphs/name/erhenglu/libertynft
+Example Query:
+```graphql
+{
+  canvasNFTs{
+    id
+    tokenId
+    index
+    startX
+    startY
+    xLength
+		yLength
+		createTime
+		updateTime
+		blur
+		govCounter
+		unsafe
+		url
+		owner
+  }
+}
+```
 > 4.2通过nft.url获取nft信息json数据
 ```json
 {
@@ -159,6 +181,28 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 
 ### 7.查询地址的NFT信息（尔衡/浩洋）
 > 7.1通过合约中的方法获取address下的所有NFT
+访问Subgraph:  https://api.thegraph.com/subgraphs/name/erhenglu/libertynft
+Example Query:
+```graphql
+{
+  canvasNFTs(where: { owner: $地址转换为bytes  }){
+    id
+    tokenId
+    index
+    startX
+    startY
+    xLength
+		yLength
+		createTime
+		updateTime
+		blur
+		govCounter
+		unsafe
+		url
+		owner
+  }
+}
+```
 
 > 7.2通过nft.url获取json数据（同4.2）
 

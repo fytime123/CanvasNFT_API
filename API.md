@@ -140,7 +140,7 @@ ethereum
 
 ### 4.获取全部NFT信息接口（尔衡/浩洋）
 
-> 4.1通过合约中的方法获取所有的NFT信息(价格信息怎么获取？？？？？？？)
+> 4.1通过合约中的方法获取所有的NFT信息 ***(价格信息怎么获取？？？？？？？)***
 
 访问Subgraph:  https://api.thegraph.com/subgraphs/name/erhenglu/libertynft
 Example Query:
@@ -153,14 +153,14 @@ Example Query:
     startX
     startY
     xLength
-		yLength
-		createTime
-		updateTime
-		blur
-		govCounter
-		unsafe
-		url
-		owner
+	yLength
+	createTime
+	updateTime
+	blur
+	govCounter
+	unsafe
+	url
+	owner
   }
 }
 ```

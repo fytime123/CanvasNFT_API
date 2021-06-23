@@ -52,47 +52,31 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 
 > 2.3调用合约方法创建nft
 
-测试网合约地址: https://ropsten.etherscan.io/address/0x2BaF539bC0916D600bC314E302A926ff53F2Af64#code
-方法: mint(address to, string memory_tokenURI, uint256 index, uint256 startX, uint256 startY, uint256 xLength, uint256 yLength) 参数:
-methodId = 0xfb8e04c8
-
-```javaScript
-params: [
-  {
-    from: '0xb60e8dd61c5d32be8058bb8eb970870f07233155',//钱包地址
-    to: '0x2baf539bc0916d600bc314e302a926ff53f2af64',//合约地址
-    data: '0xfb8e04c8.............'//参考http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
-  },'latest'
-];
-
-ethereum
-  .request({
-    method: 'eth_call',
-    params,
-  })
-  .then((result) => {
-    // The result varies by by RPC method.
-    // For example, this method will return a transaction hash hexadecimal string on success.
-  })
-  .catch((error) => {
-    // If the request fails, the Promise will reject with an error.
-  });
-
-```
-
 调用合约方法参数包含：
 ```json
   {
-        "memory_tokenURI":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
-        "index": 0,
-        "startX":100,
-        "startY":100,
-        "xLength":200,
-        "yLength":100
+        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
+        "left":100,
+        "top":100,
+        "width":200,
+        "height":100,
+        "price":""
     }
 ```
+测试网合约地址: https://ropsten.etherscan.io/address/0x2BaF539bC0916D600bC314E302A926ff53F2Af64#code
 
-
+方法: mint(address to, string memory _tokenURI, uint256 index, uint256 startX, uint256 startY, uint256 xLength, uint256 yLength)
+参数:
+```json
+  {
+        "_tokenURI":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
+        "index":0, (广告牌编号 默认值0)
+        "startX":100,(NFT左上角x坐标)
+        "startY":100,(NFT左上角y坐标)
+        "xLength":200,(NFT宽度)
+        "yLength":100,(NFT高度)
+    }
+```
 ### 3.编辑自己的NFT信息（尔衡/浩洋）
 
 > 3.1上传图片到ipfs接口 (同2.1)
@@ -101,47 +85,42 @@ ethereum
 
 > 3.3调用合约方法编辑nft（x,y,w,h）这4个值是不可以变的
 
-测试网合约地址:https://ropsten.etherscan.io/address/0x2BaF539bC0916D600bC314E302A926ff53F2Af64#code
-方法: setTokenURI(uint256 tokenId, string memory tokenURI, bool blur) blur传flase
-methodId = 0xda8438ac
-
-```javaScript
-params: [
-  {
-    from: '0xb60e8dd61c5d32be8058bb8eb970870f07233155',//钱包地址
-    to: '0x2baf539bc0916d600bc314e302a926ff53f2af64',//合约地址
-    data: '0xda8438ac.............'//参考http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
-  },'latest'
-];
-
-ethereum
-  .request({
-    method: 'eth_call',
-    params,
-  })
-  .then((result) => {
-    // The result varies by by RPC method.
-    // For example, this method will return a transaction hash hexadecimal string on success.
-  })
-  .catch((error) => {
-    // If the request fails, the Promise will reject with an error.
-  });
-
-```
-
 调用合约方法参数包含：
 ```json
   {
-       "memory_tokenURI":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
-       "index": 552
-  }
+        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
+        "price":""
+    }
 ```
+测试网合约地址:https://ropsten.etherscan.io/address/0x2BaF539bC0916D600bC314E302A926ff53F2Af64#code
 
+方法: setTokenURI(uint256 tokenId, string memory tokenURI, bool blur)
+    blur传flase
 
 ### 4.获取全部NFT信息接口（尔衡/浩洋）
 
-> 4.1通过合约中的方法获取所有的NFT信息 ***(价格信息怎么获取？？？？？？？)***
+> 4.1通过合约中的方法获取所有的NFT信息
 
+输入参数：合约地址
+输出：
+```json
+[
+    {
+        "id":"0x01",
+        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
+        "owner":"0x8073dfe92b13efb94f187537008e47fda5215262",
+        "left":100,
+        "top":100,
+        "width":200,
+        "height":100,
+        "price":"",
+        "createTime":1623251669017,
+        "updateTime":1623253668161,
+        "blur":false,
+        "voteCounter":10
+    }
+]
+```
 访问Subgraph:  https://api.thegraph.com/subgraphs/name/erhenglu/libertynft
 Example Query:
 ```graphql
@@ -153,40 +132,17 @@ Example Query:
     startX
     startY
     xLength
-	yLength
-	createTime
-	updateTime
-	blur
-	govCounter
-	unsafe
-	url
-	owner
+		yLength
+		createTime
+		updateTime
+		blur
+		govCounter
+		unsafe
+		url
+		owner
   }
 }
 ```
-
-输出：
-```json
-[
-    {
-        "id":"0x01",
-        "tokenId":"0x017889",
-        "index":"0x122",
-        "startX":100,
-        "startY":100,
-        "xLength":200,
-        "yLength":100,
-        "createTime":1623251669017,
-        "updateTime":1623253668161,
-        "blur":false,
-        "govCounter":10,
-        "unsafe": true,
-        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
-        "owner":"0x8073dfe92b13efb94f187537008e47fda5215262"
-    }
-]
-```
-
 > 4.2通过nft.url获取nft信息json数据
 ```json
 {
@@ -207,40 +163,11 @@ Example Query:
 输入参数：nft.id,fromAddress,合约地址
 
 测试网合约地址:  https://ropsten.etherscan.io/address/0x941CbE144eE720Cf99A37ab2eFD738148D517685#code
+
 购买NFT 方法：buyToken(uint256 _tokenId)
-methodId = 0x2d296bf1
-
-```javaScript
-params: [
-  {
-    from: '0xb60e8dd61c5d32be8058bb8eb970870f07233155',//钱包地址
-    to: '0x941cbe144ee720cf99a37ab2efd738148d517685',//合约地址
-    data: '0x2d296bf1.............'//参考http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
-  },'latest'
-];
-
-ethereum
-  .request({
-    method: 'eth_call',
-    params,
-  })
-  .then((result) => {
-    // The result varies by by RPC method.
-    // For example, this method will return a transaction hash hexadecimal string on success.
-  })
-  .catch((error) => {
-    // If the request fails, the Promise will reject with an error.
-  });
-
-```
-
 
 卖NFT（设置价格,挂单）方法: readyToSellToken(uint256 _tokenId, uint256 _price)
-methodId = 0x523a57cf
-
-
 取消卖单 方法: CancelSellToken(uint256 _tokenId)
-methodId = 0x9a9d9a5a
 
 
 ### 6.NFT市场，可以根据类型筛选（尔衡/浩洋）
@@ -265,39 +192,17 @@ Example Query:
     startX
     startY
     xLength
-	yLength
-	createTime
-	updateTime
-	blur
-	govCounter
-	unsafe
-	url
-	owner
+		yLength
+		createTime
+		updateTime
+		blur
+		govCounter
+		unsafe
+		url
+		owner
   }
 }
 ```
-输出：
-```json
-[
-    {
-        "id":"0x01",
-        "tokenId":"0x017889",
-        "index":"0x122",
-        "startX":100,
-        "startY":100,
-        "xLength":200,
-        "yLength":100,
-        "createTime":1623251669017,
-        "updateTime":1623253668161,
-        "blur":false,
-        "govCounter":10,
-        "unsafe": true,
-        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
-        "owner":"0x8073dfe92b13efb94f187537008e47fda5215262"
-    }
-]
-```
-
 
 > 7.2通过nft.url获取json数据（同4.2）
 

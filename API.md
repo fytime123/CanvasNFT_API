@@ -52,15 +52,43 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 
 > 2.3调用合约方法创建nft
 
+测试网合约地址: https://ropsten.etherscan.io/address/0x2BaF539bC0916D600bC314E302A926ff53F2Af64#code
+方法: mint(address to, string memory_tokenURI, uint256 index, uint256 startX, uint256 startY, uint256 xLength, uint256 yLength) 参数:
+methodId = 0xfb8e04c8
+
+```javaScript
+params: [
+  {
+    from: '0xb60e8dd61c5d32be8058bb8eb970870f07233155',//钱包地址
+    to: '0x2baf539bc0916d600bc314e302a926ff53f2af64',//合约地址
+    data: '0xfb8e04c8.............'//参考http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
+  },'latest'
+];
+
+ethereum
+  .request({
+    method: 'eth_call',
+    params,
+  })
+  .then((result) => {
+    // The result varies by by RPC method.
+    // For example, this method will return a transaction hash hexadecimal string on success.
+  })
+  .catch((error) => {
+    // If the request fails, the Promise will reject with an error.
+  });
+
+```
+
 调用合约方法参数包含：
 ```json
   {
-        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
-        "left":100,
-        "top":100,
-        "width":200,
-        "height":100,
-        "price":""
+        "memory_tokenURI":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
+        "index": 0,
+        "startX":100,
+        "startY":100,
+        "xLength":200,
+        "yLength":100
     }
 ```
 
@@ -73,18 +101,51 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 
 > 3.3调用合约方法编辑nft（x,y,w,h）这4个值是不可以变的
 
+测试网合约地址:https://ropsten.etherscan.io/address/0x2BaF539bC0916D600bC314E302A926ff53F2Af64#code
+方法: setTokenURI(uint256 tokenId, string memory tokenURI, bool blur) blur传flase
+methodId = 0xda8438ac
+
+```javaScript
+params: [
+  {
+    from: '0xb60e8dd61c5d32be8058bb8eb970870f07233155',//钱包地址
+    to: '0x2baf539bc0916d600bc314e302a926ff53f2af64',//合约地址
+    data: '0xda8438ac.............'//参考http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
+  },'latest'
+];
+
+ethereum
+  .request({
+    method: 'eth_call',
+    params,
+  })
+  .then((result) => {
+    // The result varies by by RPC method.
+    // For example, this method will return a transaction hash hexadecimal string on success.
+  })
+  .catch((error) => {
+    // If the request fails, the Promise will reject with an error.
+  });
+
+```
+
 调用合约方法参数包含：
 ```json
   {
-        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
-        "price":""
-    }
+       "memory_tokenURI":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
+       "index": 552
+  }
 ```
 
 
 ### 4.获取全部NFT信息接口（尔衡/浩洋）
 
 > 4.1通过合约中的方法获取所有的NFT信息
+
+访问Subgraph: https://api.thegraph.com/subgraphs/name/erhenglu/libertynft Example Query:
+
+
+
 
 输入参数：合约地址
 输出：
@@ -106,6 +167,7 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
     }
 ]
 ```
+
 > 4.2通过nft.url获取nft信息json数据
 ```json
 {

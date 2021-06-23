@@ -19,10 +19,60 @@ https://docs.metamask.io/guide/registering-your-token.html
 ### 4.如果您想在地址更改时收到通知
 https://docs.metamask.io/guide/accessing-accounts.html
 
-### 5.发送交易
+### 5.ethereum.request(args)
+https://docs.metamask.io/guide/ethereum-provider.html#methods
+
+```javaScript
+interface RequestArguments {
+  method: string;
+  params?: unknown[] | object;
+}
+
+ethereum.request(args: RequestArguments): Promise<unknown>;
+```
+
+用于request通过 MetaMask 向以太坊提交 RPC 请求。它返回Promise解析为 RPC 方法调用结果的 。
+
+的params和返回值将RPC方法而变化。在实践中，如果一个方法有任何params，它们几乎总是类型的Array<any>。
+
+如果请求因任何原因失败，Promise 将拒绝并返回 Ethereum RPC Error。
+
+除了一些其他钱包可能不支持的方法之外，MetaMask 还支持大多数标准化的以太坊 RPC 方法。有关详细信息，请参阅 MetaMask RPC API 文档。
+
+例子
+```javaScript
+params: [
+  {
+    from: '0xb60e8dd61c5d32be8058bb8eb970870f07233155',
+    to: '0xd46e8dd67c5d32be8058bb8eb970870f07244567',
+    gas: '0x76c0', // 30400
+    gasPrice: '0x9184e72a000', // 10000000000000
+    value: '0x9184e72a', // 2441406250
+    data:
+      '0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675',
+  },
+];
+
+ethereum
+  .request({
+    method: 'eth_sendTransaction',
+    params,
+  })
+  .then((result) => {
+    // The result varies by by RPC method.
+    // For example, this method will return a transaction hash hexadecimal string on success.
+  })
+  .catch((error) => {
+    // If the request fails, the Promise will reject with an error.
+  });
+
+```
+
+
+### 6.发送交易
 https://docs.metamask.io/guide/sending-transactions.html#example
 
-### 6.合约方法
+### 7.合约方法
 Ethereum JSON-RPC Methods  
 
 For the Ethereum JSON-RPC API, please see the Ethereum wiki (opens new window).  

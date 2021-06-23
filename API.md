@@ -140,12 +140,30 @@ ethereum
 
 ### 4.获取全部NFT信息接口（尔衡/浩洋）
 
-> 4.1通过合约中的方法获取所有的NFT信息
+> 4.1通过合约中的方法获取所有的NFT信息(价格信息怎么获取？？？？？？？)
 
-访问Subgraph: https://api.thegraph.com/subgraphs/name/erhenglu/libertynft Example Query:
-
-
-
+访问Subgraph:  https://api.thegraph.com/subgraphs/name/erhenglu/libertynft
+Example Query:
+```graphql
+{
+  canvasNFTs{
+    id
+    tokenId
+    index
+    startX
+    startY
+    xLength
+		yLength
+		createTime
+		updateTime
+		blur
+		govCounter
+		unsafe
+		url
+		owner
+  }
+}
+```
 
 输入参数：合约地址
 输出：
@@ -153,17 +171,19 @@ ethereum
 [
     {
         "id":"0x01",
-        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
-        "owner":"0x8073dfe92b13efb94f187537008e47fda5215262",
-        "left":100,
-        "top":100,
-        "width":200,
-        "height":100,
-        "price":"",
+        "tokenId":"0x017889",
+        "index":"0x122",
+        "startX":100,
+        "startY":100,
+        "xLength":200,
+        "yLength":100,
         "createTime":1623251669017,
         "updateTime":1623253668161,
         "blur":false,
-        "voteCounter":10
+        "govCounter":10,
+        "unsafe": true,
+        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
+        "owner":"0x8073dfe92b13efb94f187537008e47fda5215262"
     }
 ]
 ```

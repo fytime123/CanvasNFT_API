@@ -121,7 +121,7 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
     }
 ]
 ```
-访问Subgraph:  https://api.thegraph.com/subgraphs/name/erhenglu/libertynft
+访问Subgraph:  https://thegraph.com/subgraphs/name/erhenglu/libertynft
 Example Query:
 ```graphql
 {
@@ -162,7 +162,7 @@ Example Query:
 ### 5.购买NFT（尔衡/浩洋）
 输入参数：nft.id,fromAddress,合约地址
 
-测试网合约地址:  https://ropsten.etherscan.io/address/0x941CbE144eE720Cf99A37ab2eFD738148D517685#code
+测试网合约地址:  https://ropsten.etherscan.io/address/0xc0fc8e20a7a84441d6a2163d18ba93f34905a94e#code
 
 购买NFT 方法：buyToken(uint256 _tokenId)
 
@@ -181,7 +181,7 @@ Example Query:
 
 ### 7.查询地址的NFT信息（尔衡/浩洋）
 > 7.1通过合约中的方法获取address下的所有NFT
-访问Subgraph:  https://api.thegraph.com/subgraphs/name/erhenglu/libertynft
+访问Subgraph:  https://thegraph.com/subgraphs/name/erhenglu/libertynft
 Example Query:
 ```graphql
 {
@@ -290,6 +290,64 @@ Example Query:
         ]
     }
 ```
+分两个subgraph query
+1.NFT的属性查询
+访问Subgraph:  https://thegraph.com/subgraphs/name/erhenglu/libertynft
+Example Query:
+```graphql
+{
+  canvasNFTs(where: { tokenId: 2}){
+    id
+    tokenId
+    index
+    startX
+    startY
+    xLength
+		yLength
+		createTime
+		updateTime
+		blur
+		govCounter
+		unsafe
+		url
+		owner
+  }
+}
+```
+
+2.NFT价格和历史记录查询 
+访问Subgraph: https://thegraph.com/explorer/subgraph/erhenglu/libertymarket
+价格 Example query:
+```graphql
+{
+  canvasNFTs(where: { tokenId: 2}){
+    id
+    tokenId
+    price
+    seller
+    onSale 
+  }
+}
+```
+onSale=true说明正在挂单售卖
+onSale=false说明这个NFT没有挂单
+
+交易记录 Example query:
+```graphql
+{
+  tradeHistories(where: { tokenId: 2}){
+    id
+    tokenId
+    price
+    seller
+    buyer
+    fee
+    blockId
+    time
+  }
+}
+```
+
 > 10.2通过url获取NFT信息json
 ```json
 {

@@ -64,6 +64,8 @@ https://chainlist.org/
 
 https://github.com/antonnell/networklist-org/blob/main/components/chain/chain.js
 
+ ![bnb主链](./images/bnb_mainnet.jpg)
+
 ```javaScript
 const addToNetwork = () => {
     if(!(account && account.address)) {

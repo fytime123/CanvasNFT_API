@@ -13,13 +13,99 @@ https://docs.metamask.io/guide/create-dapp.html#project-setup
 参考文档：
 https://docs.metamask.io/guide/defining-your-icon.html
 
-### 3.向用户注册token
+
+### 3.连接与断开连接
+
+#### 3.1连接
+```javaScript
+interface ConnectInfo {
+  chainId: string;
+}
+
+ethereum.on('connect', handler: (connectInfo: ConnectInfo) => void);
+```
+当 MetaMask 提供程序首次能够向链提交 RPC 请求时，它会发出此事件。我们建议使用connect事件处理程序和ethereum.isConnected()方法来确定提供程序何时/是否连接。
+
+#### 3.2断开
+```javaScript
+ethereum.on('disconnect', handler: (error: ProviderRpcError) => void);
+```
+可以使用该ethereum.isConnected()方法来确定提供程序是否已断开连接。
+
+
+#### 3.3链改变
+
+```javaScript
+ethereum.on('chainChanged', handler: (chainId: string) => void);
+```
+当当前连接的链发生变化时，MetaMask 提供程序会发出此事件。
+
+所有 RPC 请求都提交到当前连接的链。因此，通过侦听此事件来跟踪当前链 ID 至关重要。
+
+我们强烈建议在链更改时重新加载页面，除非您有充分的理由不这样做。
+```javaScript
+ethereum.on('chainChanged', (_chainId) => window.location.reload());
+```
+#### 3.4帐户已更改
+
+```javaScript
+ethereum.on('accountsChanged', handler: (accounts: Array<string>) => void);
+```
+
+每当eth_accountsRPC 方法的返回值发生更改时，MetaMask 提供程序都会发出此事件。 eth_accounts返回一个空数组或包含单个帐户地址的数组。返回的地址（如果有）是允许调用者访问的最近使用的帐户的地址。调用者由他们的 URL origin标识，这意味着具有相同来源的所有站点共享相同的权限。
+
+这意味着accountsChanged每当用户公开的帐户地址发生变化时都会发出。
+
+
+### 4.添加自定义RPC网络
+Add Network (Custom RPC) using Chainlist in the browser extension
+https://metamask.zendesk.com/hc/en-us/articles/360058992772-Add-Network-Custom-RPC-using-Chainlist-in-the-browser-extension
+https://chainlist.org/
+
+https://github.com/antonnell/networklist-org/blob/main/components/chain/chain.js
+
+```javaScript
+const addToNetwork = () => {
+    if(!(account && account.address)) {
+      stores.dispatcher.dispatch({ type: TRY_CONNECT_WALLET })
+      return
+    }
+
+    const params = {
+      chainId: toHex(chain.chainId), // A 0x-prefixed hexadecimal string
+      chainName: chain.name,
+      nativeCurrency: {
+        name: chain.nativeCurrency.name,
+        symbol: chain.nativeCurrency.symbol, // 2-6 characters long
+        decimals: chain.nativeCurrency.decimals,
+      },
+      rpcUrls: chain.rpc,
+      blockExplorerUrls: [ ((chain.explorers && chain.explorers.length > 0 && chain.explorers[0].url) ? chain.explorers[0].url : chain.infoURL) ]
+    }
+
+    window.web3.eth.getAccounts((error, accounts) => {
+      window.ethereum.request({
+        method: 'wallet_addEthereumChain',
+        params: [params, accounts[0]],
+      })
+      .then((result) => {
+        console.log(result)
+      })
+      .catch((error) => {
+        stores.emitter.emit(ERROR, error.message ? error.message : error)
+        console.log(error)
+      });
+    })
+  }
+```
+
+
+
+### 5.向用户注册token
 https://docs.metamask.io/guide/registering-your-token.html
 
-### 4.如果您想在地址更改时收到通知
-https://docs.metamask.io/guide/accessing-accounts.html
 
-### 5.ethereum.request(args)
+### 6.ethereum.request(args)
 https://docs.metamask.io/guide/ethereum-provider.html#methods
 
 ```javaScript
@@ -69,10 +155,10 @@ ethereum
 ```
 
 
-### 6.发送交易
+### 7.发送交易
 https://docs.metamask.io/guide/sending-transactions.html#example
 
-### 7.合约方法
+### 8.合约方法
 Ethereum JSON-RPC Methods  
 
 For the Ethereum JSON-RPC API, please see the Ethereum wiki (opens new window).  
@@ -152,43 +238,4 @@ data = methodId + "000000000000000000000000" + walletHex;
 
 
 
-Add Network (Custom RPC) using Chainlist in the browser extension
-https://metamask.zendesk.com/hc/en-us/articles/360058992772-Add-Network-Custom-RPC-using-Chainlist-in-the-browser-extension
-https://chainlist.org/
 
-https://github.com/antonnell/networklist-org/blob/main/components/chain/chain.js
-
-```javaScript
-const addToNetwork = () => {
-    if(!(account && account.address)) {
-      stores.dispatcher.dispatch({ type: TRY_CONNECT_WALLET })
-      return
-    }
-
-    const params = {
-      chainId: toHex(chain.chainId), // A 0x-prefixed hexadecimal string
-      chainName: chain.name,
-      nativeCurrency: {
-        name: chain.nativeCurrency.name,
-        symbol: chain.nativeCurrency.symbol, // 2-6 characters long
-        decimals: chain.nativeCurrency.decimals,
-      },
-      rpcUrls: chain.rpc,
-      blockExplorerUrls: [ ((chain.explorers && chain.explorers.length > 0 && chain.explorers[0].url) ? chain.explorers[0].url : chain.infoURL) ]
-    }
-
-    window.web3.eth.getAccounts((error, accounts) => {
-      window.ethereum.request({
-        method: 'wallet_addEthereumChain',
-        params: [params, accounts[0]],
-      })
-      .then((result) => {
-        console.log(result)
-      })
-      .catch((error) => {
-        stores.emitter.emit(ERROR, error.message ? error.message : error)
-        console.log(error)
-      });
-    })
-  }
-```

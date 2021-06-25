@@ -140,7 +140,7 @@ ethereum
 
 ### 4.获取全部NFT信息接口（尔衡/浩洋）
 
-> 4.1通过合约中的方法获取所有的NFT信息 ***(价格信息怎么获取？？？？？？？)***
+> 4.1通过合约中的方法获取所有的NFT信息 ***(价格信息怎么获取？？？？？？？)*** ==>参看（10.1 第2条）
 
 访问Subgraph:  https://api.thegraph.com/subgraphs/name/erhenglu/libertynft
 Example Query:
@@ -361,35 +361,112 @@ Example Query:
 ### 10.获取nft.id的详情，包括历史交易信息（尔衡/浩洋）
 > 10.1 通过ID，获取NFT链上数据详情
 
-
-
-
-
-```json
-  {
-        "id":"0x01",
-        "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
-        "owner":"0x8073dfe92b13efb94f187537008e47fda5215262",
-        "left":100,
-        "top":100,
-        "width":200,
-        "height":100,
-        "price":"",
-        "createTime":1623252461329,
-        "updateTime":1623254460473,
-        "blur":false,
-        "voteCounter":10,
-        "history":[
-            {
-                "event":"name",
-                "price":"102",
-                "from":"0x8073dfe92b13efb94f187537008e47fda5215262",
-                "to":"0x41fEa2D4eFEF108F6495B311daD5E2B21C23b4Ee",
-                "date":1623254460474
-            }
-        ]
-    }
+分两个subgraph query
+1）、NFT的属性查询
+访问Subgraph:  https://thegraph.com/subgraphs/name/erhenglu/libertynft
+Example Query:
+```graphql
+{
+  canvasNFTs(where: { tokenId: 2}){
+    id
+    tokenId
+    index
+    startX
+    startY
+    xLength
+    yLength
+	createTime
+	updateTime
+	blur
+	govCounter
+	unsafe
+	url
+	owner
+  }
+}
 ```
+返回结果：
+```json
+{
+    "id":"0x01",
+    "tokenId":"0x017889",
+    "index":"0x122",
+    "startX":100,
+    "startY":100,
+    "xLength":200,
+    "yLength":100,
+    "createTime":1623251669017,
+    "updateTime":1623253668161,
+    "blur":false,
+    "govCounter":10,
+    "unsafe": true,
+    "url":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
+    "owner":"0x8073dfe92b13efb94f187537008e47fda5215262"
+}
+```
+
+
+2）、NFT价格和历史记录查询 
+访问Subgraph: https://thegraph.com/explorer/subgraph/erhenglu/libertymarket
+价格 Example query:
+```graphql
+{
+  canvasNFTs(where: { tokenId: 2}){
+    id
+    tokenId
+    price
+    seller
+    onSale 
+  }
+}
+```
+返回结果：
+```json
+{
+    "id":"0x01",
+    "tokenId":"0x017889",
+    "price": "0x455255",
+    "seller":"0x8073dfe92b13efb94f187537008e47fda5215262",
+    "onSale":54566
+}
+```
+onSale=true说明正在挂单售卖
+onSale=false说明这个NFT没有挂单
+
+
+
+3）、交易记录 Example query:
+```graphql
+{
+  tradeHistories(where: { tokenId: 2}){
+    id
+    tokenId
+    price
+    seller
+    buyer
+    fee
+    blockId
+    time
+  }
+}
+```
+返回结果：
+```json
+[
+    {
+        "id":"0x01",
+        "tokenId":"0x017889",
+        "price": "0x455255",
+        "seller":"0x8073dfe92b13efb94f187537008e47fda5215262",
+        "buyer":"0x799621c508498bb0a6482b6596a3a2e908bcbbba",
+        "fee":788,
+        "blockId":"0x4855755",
+        "time": 1623253668161
+    }
+]
+```
+
+
 > 10.2通过url获取NFT信息json
 ```json
 {

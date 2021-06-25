@@ -148,3 +148,47 @@ data = methodId + "000000000000000000000000" + walletHex;
 //1.https://www.4byte.directory/signatures/  
 
 
+
+
+
+
+Add Network (Custom RPC) using Chainlist in the browser extension
+https://metamask.zendesk.com/hc/en-us/articles/360058992772-Add-Network-Custom-RPC-using-Chainlist-in-the-browser-extension
+https://chainlist.org/
+
+https://github.com/antonnell/networklist-org/blob/main/components/chain/chain.js
+
+```javaScript
+const addToNetwork = () => {
+    if(!(account && account.address)) {
+      stores.dispatcher.dispatch({ type: TRY_CONNECT_WALLET })
+      return
+    }
+
+    const params = {
+      chainId: toHex(chain.chainId), // A 0x-prefixed hexadecimal string
+      chainName: chain.name,
+      nativeCurrency: {
+        name: chain.nativeCurrency.name,
+        symbol: chain.nativeCurrency.symbol, // 2-6 characters long
+        decimals: chain.nativeCurrency.decimals,
+      },
+      rpcUrls: chain.rpc,
+      blockExplorerUrls: [ ((chain.explorers && chain.explorers.length > 0 && chain.explorers[0].url) ? chain.explorers[0].url : chain.infoURL) ]
+    }
+
+    window.web3.eth.getAccounts((error, accounts) => {
+      window.ethereum.request({
+        method: 'wallet_addEthereumChain',
+        params: [params, accounts[0]],
+      })
+      .then((result) => {
+        console.log(result)
+      })
+      .catch((error) => {
+        stores.emitter.emit(ERROR, error.message ? error.message : error)
+        console.log(error)
+      });
+    })
+  }
+```

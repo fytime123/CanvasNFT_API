@@ -67,7 +67,7 @@ window.ethereum.request({
 ```
 
 
-切换链
+切换链，在metamask的默认链中不能再添加的方式，只能使用切换的方式
 ```javaScript
 try {
   await ethereum.request({

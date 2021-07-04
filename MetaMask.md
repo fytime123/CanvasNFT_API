@@ -1,5 +1,9 @@
 ## 钱包接口
 
+
+[MetaMask API Reference](https://metamask.github.io/api-playground/api-documentation/#)
+
+
 ### 1.连接到 MetaMask 钱包
 检测是否安装？没有安装，去安装  
 

@@ -62,7 +62,7 @@ params: [
     from: '0xb60e8dd61c5d32be8058bb8eb970870f07233155',//钱包地址
     to: '0x2baf539bc0916d600bc314e302a926ff53f2af64',//合约地址
     data: '0xfb8e04c8.............'//参考 http://cw.hubwiz.com/card/c/web3.js-1.0/1/7/6/        http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
-  },'latest'
+  }
 ];
 
 ethereum
@@ -111,7 +111,7 @@ params: [
     from: '0xb60e8dd61c5d32be8058bb8eb970870f07233155',//钱包地址
     to: '0x2baf539bc0916d600bc314e302a926ff53f2af64',//合约地址
     data: '0xda8438ac.............'//参考http://cw.hubwiz.com/card/c/web3.js-1.0/1/7/6/       http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
-  },'latest'
+  }
 ];
 
 ethereum
@@ -216,7 +216,7 @@ params: [
     from: '0xb60e8dd61c5d32be8058bb8eb970870f07233155',//钱包地址
     to: '0x941cbe144ee720cf99a37ab2efd738148d517685',//合约地址
     data: '0x2d296bf1.............'//参考http://cw.hubwiz.com/card/c/web3.js-1.0/1/7/6/     http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
-  },'latest'
+  }
 ];
 
 ethereum

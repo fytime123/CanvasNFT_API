@@ -50,6 +50,46 @@ ethereum.on('chainChanged', handler: (chainId: string) => void);
 ```javaScript
 ethereum.on('chainChanged', (_chainId) => window.location.reload());
 ```
+
+获取当前连接链ChainId
+```javaScript
+window.ethereum.request({
+        method: 'eth_chainId',
+        params: [],
+      })
+      .then((result) => {
+        console.log(result)
+      })
+      .catch((error) => {
+        stores.emitter.emit(ERROR, error.message ? error.message : error)
+        console.log(error)
+      });
+```
+
+
+切换链
+```javaScript
+try {
+  await ethereum.request({
+    method: 'wallet_switchEthereumChain',
+    params: [{ chainId: '0xf00' }],
+  });
+} catch (switchError) {
+  // This error code indicates that the chain has not been added to MetaMask.
+  if (error.code === 4902) {
+    try {
+      await ethereum.request({
+        method: 'wallet_addEthereumChain',
+        params: [{ chainId: '0xf00', rpcUrl: 'https://...' /* ... */ }],
+      });
+    } catch (addError) {
+      // handle "add" error
+    }
+  }
+  // handle other "switch" errors
+}
+```
+
 #### 3.4帐户已更改
 
 ```javaScript

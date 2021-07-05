@@ -52,43 +52,55 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 
 > 2.3调用合约方法创建nft
 
+要创建NFT需要您钱包的Pixel合约同意NFT合约消耗您的Pixel
+方法approve(address nftContractAddress,uint256 tokenId)
+```javaScript
+ ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//用户自己的钱包地址
+      to: '0xb59efd0f19fb9e9cb32d3e84bebec5ca4144c95e',//Pixel合约地址
+       data:'0x095ea7b30000000000000000000000002baf539bc0916d600bc314e302a926ff53f2af64ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+    },//2baf539bc0916d600bc314e302a926ff53f2af64为创建NFT合约地址
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+```
+
+
 测试网合约地址: https://ropsten.etherscan.io/address/0x2BaF539bC0916D600bC314E302A926ff53F2Af64#code
 方法: mint(address to, string memory_tokenURI, uint256 index, uint256 startX, uint256 startY, uint256 xLength, uint256 yLength) 参数:
 methodId = 0xfb8e04c8
 
 ```javaScript
-params: [
-  {
-    from: '0xb60e8dd61c5d32be8058bb8eb970870f07233155',//钱包地址
-    to: '0x2baf539bc0916d600bc314e302a926ff53f2af64',//合约地址
-    data: '0xfb8e04c8.............'//参考 http://cw.hubwiz.com/card/c/web3.js-1.0/1/7/6/        http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
-  }
-];
 
-ethereum
-  .request({
-    method: 'eth_sendTransaction',
-    params,
-  })
-  .then((result) => {
-    // The result varies by by RPC method.
-    // For example, this method will return a transaction hash hexadecimal string on success.
-  })
-  .catch((error) => {
-    // If the request fails, the Promise will reject with an error.
-  });
+ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//用户自己的钱包地址
+      to: '0x2baf539bc0916d600bc314e302a926ff53f2af64',//创建NFT合约地址
+      data:'0xfb8e04c800000000000000000000000041fea2d4efef108f6495b311dad5e2b21c23b4ee00000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c800000000000000000000000000000000000000000000000000000000000000c8000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000022222000000000000000000000000000000000000000000000000000000000000'
+      //data的参数 mint("0x41fea2d4efef108f6495b311dad5e2b21c23b4ee",'""',0,200,200,10,10) 
+      //参考 http://cw.hubwiz.com/card/c/web3.js-1.0/1/7/6/        http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
 
-```
 
 调用合约方法参数包含：
 ```json
   {
-        "memory_tokenURI":"https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL",
+        "memory_tokenURI":"",
         "index": 0,
-        "startX":100,
-        "startY":100,
-        "xLength":200,
-        "yLength":100
+        "startX":200,
+        "startY":200,
+        "xLength":10,
+        "yLength":10
     }
 ```
 
@@ -527,3 +539,18 @@ onSale=false说明这个NFT没有挂单
 
 
 ####2.正式合约地址
+
+
+
+1.pixel.approve(NFTContractAddress)
+
+from： myaddress
+to： pixel_contractAddress
+approve(NFTContractAddress,-1)
+
+
+2.NFTContractAddress.mint()
+
+
+
+

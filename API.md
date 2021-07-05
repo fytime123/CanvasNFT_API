@@ -62,7 +62,7 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
       from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//用户自己的钱包地址
       to: '0xb59efd0f19fb9e9cb32d3e84bebec5ca4144c95e',//Pixel合约地址
        data:'0x095ea7b30000000000000000000000002baf539bc0916d600bc314e302a926ff53f2af64ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
-    },//2baf539bc0916d600bc314e302a926ff53f2af64为创建NFT合约地址
+    },//2baf539bc0916d600bc314e302a926ff53f2af64为创建NFT合约地址  方法approve("0x2baf539bc0916d600bc314e302a926ff53f2af64",-1)
   ],
 })
 .then((txHash) => console.log(txHash))
@@ -90,7 +90,7 @@ ethereum.request({
 })
 .then((txHash) => console.log(txHash))
 .catch((error) => console.error);
-
+```
 
 调用合约方法参数包含：
 ```json

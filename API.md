@@ -495,3 +495,35 @@ onSale=false说明这个NFT没有挂单
 
 
 
+
+### 附录
+####1.测试合约地址
++ Pixel合约地址
+0xb59efd0f19fb9e9cb32d3e84bebec5ca4144c95e
+
++ Canvas合约地址
+0xcd5a398f67b95670caf38f58078719419ab9ee0e
+
++ 创建NFT合约地址（LibertyNFT）
+0x2baf539bc0916d600bc314e302a926ff53f2af64
+
++ 挂单NFT合约地址
+0x941cbe144ee720cf99a37ab2efd738148d517685
+
++ BidNFT
+0xc0fc8e20a7a84441d6a2163d18ba93f34905a94e
+
++ 空投合约地址
+？
+
++ 购买Pixel合约地址
+？
+
++ 旷池合约地址
+？
+
++ BUSD合约地址
+0x01d72303e276bc4535519af73c1be4d51656c1c4
+
+
+####2.正式合约地址

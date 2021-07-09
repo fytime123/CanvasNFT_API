@@ -222,7 +222,7 @@ eth_sendTransaction(opens new window)
 eth_sign(opens new window)  
 
 
-> 6.1查询token余额:  
+#### 8.1查询token余额:  
 
 获取代币的余额，要通过rpc接口得到接口为：eth_call  
 
@@ -258,7 +258,7 @@ String methodId = "0x70a08231";
 data = methodId + "000000000000000000000000" + walletHex;  
 
 
-> 6.2查询token symbol名称:  
+####  8.2查询token symbol名称:  
 
 //Keccak-256("symbol()")="0x95d89b41e2f5f391a79ec54e9d87c79d6e777c63e32c28da95b4e9e4a79250ec"  
 
@@ -269,7 +269,7 @@ data = methodId + "000000000000000000000000" + walletHex;
 //1.https://www.4byte.directory/signatures/  
 
 
->  6.3查询token decimals:
+####   8.3查询token decimals:
 
 //Keccak-256("decimals()")="0x313ce567add4d438edf58b94ff345d7d38c45b17dfc0f947988d7819dca364f9"  
 
@@ -281,7 +281,60 @@ data = methodId + "000000000000000000000000" + walletHex;
 
 
 
+### 9.查询交易是否成功
+
+9.1 eth_getTransactionReceipt：获取交易收据
+```javaScript
+params: [
+  "0xa2a8abbcfed21e0d3075088fb3d2df9df7b0aa3fb6af63a8e289760863222b4e"
+];
+
+ethereum
+  .request({
+    method: 'eth_getTransactionReceipt',
+    params,
+  })
+  .then((result) => {
+    // The result varies by by RPC method.
+    // For example, this method will return a transaction hash hexadecimal string on success.
+  })
+  .catch((error) => {
+    // If the request fails, the Promise will reject with an error.
+  });
+
+```
 
 
 
+9.2 eth_blockNumber：获取最新区块号
+```javaScript
+params: [];
 
+ethereum
+  .request({
+    method: 'eth_blockNumber',
+    params,
+  })
+  .then((result) => {
+    // The result varies by by RPC method.
+    // For example, this method will return a transaction hash hexadecimal string on success.
+  })
+  .catch((error) => {
+    // If the request fails, the Promise will reject with an error.
+  });
+
+```
+
+
+先以receipt!=null && receipt.status==1表示交易成功
+
+
+更准确的方法是：  
+
+const receipt = getTransactionReceipt(txhash)
+//later...
+const latest =  getBlockNumber()
+//confirms
+confirms =  latest - receipt.number + 1
+
+receipt.status==1 && confirms>=5 表示成功交易

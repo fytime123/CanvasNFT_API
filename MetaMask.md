@@ -283,7 +283,7 @@ data = methodId + "000000000000000000000000" + walletHex;
 
 ### 9.查询交易是否成功
 
-9.1 eth_getTransactionReceipt：获取交易收据
+#### 9.1 eth_getTransactionReceipt：获取交易收据
 ```javaScript
 params: [
   "0xa2a8abbcfed21e0d3075088fb3d2df9df7b0aa3fb6af63a8e289760863222b4e"
@@ -306,7 +306,7 @@ ethereum
 
 
 
-9.2 eth_blockNumber：获取最新区块号
+#### 9.2 eth_blockNumber：获取最新区块号
 ```javaScript
 params: [];
 

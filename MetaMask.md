@@ -286,7 +286,7 @@ data = methodId + "000000000000000000000000" + walletHex;
 #### 9.1 eth_getTransactionReceipt：获取交易收据
 ```javaScript
 params: [
-  "0xa2a8abbcfed21e0d3075088fb3d2df9df7b0aa3fb6af63a8e289760863222b4e"
+  "0xa2a8abbcfed21e0d3075088fb3d2df9df7b0aa3fb6af63a8e289760863222b4e"//txId
 ];
 
 ethereum
@@ -331,10 +331,17 @@ ethereum
 
 更准确的方法是：  
 
-const receipt = getTransactionReceipt(txhash)
-//later...
-const latest =  getBlockNumber()
-//confirms
-confirms =  latest - receipt.number + 1
+const receipt = getTransactionReceipt(txhash)  
 
-receipt.status==1 && confirms>=5 表示成功交易
+//later...  
+
+const latest =  getBlockNumber()  
+
+//confirms  
+
+confirms =  latest - receipt.number + 1  
+
+
+
+receipt.status==1 && confirms>=5 表示成功交易  
+

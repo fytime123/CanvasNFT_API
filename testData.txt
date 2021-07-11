@@ -29,3 +29,139 @@ data:'0xfb8e04c800000000000000000000000041fea2d4efef108f6495b311dad5e2b21c23b4ee
 
 
 
+
+
+
+
+
+====================================readyToSellToken start==========================================
+
+NFTContract.approve(bysellContract,tokenId)
+
+Function: approve(address to, uint256 tokenId)
+
+0x095ea7b3
+000000000000000000000000c0fc8e20a7a84441d6a2163d18ba93f34905a94e
+0000000000000000000000000000000000000000000000000000000000000004
+
+ ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
+      to: '0x2baf539bc0916d600bc314e302a926ff53f2af64',
+data:'0x095ea7b3000000000000000000000000c0fc8e20a7a84441d6a2163d18ba93f34905a94e0000000000000000000000000000000000000000000000000000000000000004'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+
+
+0xc0fc8e20a7a84441d6a2163d18ba93f34905a94e
+readyToSellToken(uint256 _tokenId, uint256 _price)
+
+0x523a57cf
+0000000000000000000000000000000000000000000000000000000000000004
+0000000000000000000000000000000000000000000000006bc75e2d63100000
+
+
+ ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
+      to: '0xc0fc8e20a7a84441d6a2163d18ba93f34905a94e',
+data:'0x523a57cf00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000006bc75e2d63100000'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+
+===================================readyToSellToken end=============================================
+
+
+====================================CancelSellToken start===========================================
+
+取消卖单 方法: cancelSellToken(uint256 _tokenId)
+methodId = 0xb84eb76a
+
+0xb84eb76a
+0000000000000000000000000000000000000000000000000000000000000004
+
+
+ ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
+      to: '0xc0fc8e20a7a84441d6a2163d18ba93f34905a94e',
+data:'0xb84eb76a0000000000000000000000000000000000000000000000000000000000000004'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+
+====================================CancelSellToken end=============================================
+
+
+====================================buyToken start==================================================
+
+Function: approve(address spender, uint256 amount)
+
+MethodID: 0x095ea7b3
+[0]:  000000000000000000000000c0fc8e20a7a84441d6a2163d18ba93f34905a94e
+[1]:  ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+0x095ea7b3000000000000000000000000c0fc8e20a7a84441d6a2163d18ba93f34905a94effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0xf72aa81038ce6170ae5041058597fd98af7ced44',
+      to: '0x01d72303e276bc4535519af73c1be4d51656c1c4',
+data:'0x095ea7b3000000000000000000000000c0fc8e20a7a84441d6a2163d18ba93f34905a94effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+
+
+
+
+
+Function: buyToken(uint256 _tokenId) ***
+
+MethodID: 0x2d296bf1
+[0]:  0000000000000000000000000000000000000000000000000000000000000004
+
+
+0x2d296bf1
+0000000000000000000000000000000000000000000000000000000000000004
+
+
+ ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0xf72aa81038ce6170ae5041058597fd98af7ced44',
+      to: '0xc0fc8e20a7a84441d6a2163d18ba93f34905a94e',
+data:'0x2d296bf10000000000000000000000000000000000000000000000000000000000000004'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+
+
+
+====================================buyToken end====================================================

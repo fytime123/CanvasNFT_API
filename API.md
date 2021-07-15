@@ -61,8 +61,8 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
     {
       from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//用户自己的钱包地址
       to: '0xb59efd0f19fb9e9cb32d3e84bebec5ca4144c95e',//Pixel合约地址
-       data:'0x095ea7b30000000000000000000000002baf539bc0916d600bc314e302a926ff53f2af64ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
-    },//2baf539bc0916d600bc314e302a926ff53f2af64为创建NFT合约地址  方法approve("0x2baf539bc0916d600bc314e302a926ff53f2af64",-1)
+       data:'0x095ea7b30000000000000000000000008a78d7013703d45947d6710449825697677b0342ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+    },//8a78d7013703d45947d6710449825697677b0342为创建NFT合约地址  方法approve("0x8a78d7013703d45947d6710449825697677b0342",-1)
   ],
 })
 .then((txHash) => console.log(txHash))
@@ -81,7 +81,7 @@ ethereum.request({
   params: [
     {
       from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//用户自己的钱包地址
-      to: '0x2baf539bc0916d600bc314e302a926ff53f2af64',//创建NFT合约地址
+      to: '0x8a78d7013703d45947d6710449825697677b0342',//创建NFT合约地址
       data:'0xfb8e04c800000000000000000000000041fea2d4efef108f6495b311dad5e2b21c23b4ee00000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c800000000000000000000000000000000000000000000000000000000000000c8000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000022222000000000000000000000000000000000000000000000000000000000000'
       //data的参数 mint("0x41fea2d4efef108f6495b311dad5e2b21c23b4ee",'""',0,200,200,10,10) 
       //参考 http://cw.hubwiz.com/card/c/web3.js-1.0/1/7/6/        http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
@@ -113,31 +113,43 @@ ethereum.request({
 
 > 3.3调用合约方法编辑nft（x,y,w,h）这4个值是不可以变的
 
-测试网合约地址:https://ropsten.etherscan.io/address/0x2BaF539bC0916D600bC314E302A926ff53F2Af64#code
+测试网合约地址:https://ropsten.etherscan.io/address/0x8a78d7013703d45947d6710449825697677b0342#code
+
+canvasContract.approve(nftContractAddress,-1)
+```javaScript
+ ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
+      to: '0xcd5a398f67b95670caf38f58078719419ab9ee0e',
+data:'0x095ea7b30000000000000000000000008a78d7013703d45947d6710449825697677b0342ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+```
+
+
 方法: setTokenURI(uint256 tokenId, string memory tokenURI, bool blur) blur传flase
 methodId = 0xda8438ac
 
 ```javaScript
-params: [
-  {
-    from: '0xb60e8dd61c5d32be8058bb8eb970870f07233155',//钱包地址
-    to: '0x2baf539bc0916d600bc314e302a926ff53f2af64',//合约地址
-    data: '0xda8438ac.............'//参考http://cw.hubwiz.com/card/c/web3.js-1.0/1/7/6/       http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
-  }
-];
+ ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
+      to: '0x8a78d7013703d45947d6710449825697677b0342',
+data:'0xda8438ac000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005068747470733a2f2f676174657761792e70696e6174612e636c6f75642f697066732f516d564a4746354d73476b59426544634c78474553534e36653559506258346f466f4d6936487a356f4b3461526900000000000000000000000000000000'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
 
-ethereum
-  .request({
-    method: 'eth_sendTransaction',
-    params,
-  })
-  .then((result) => {
-    // The result varies by by RPC method.
-    // For example, this method will return a transaction hash hexadecimal string on success.
-  })
-  .catch((error) => {
-    // If the request fails, the Promise will reject with an error.
-  });
 
 ```
 
@@ -222,37 +234,114 @@ Example Query:
 购买NFT 方法：buyToken(uint256 _tokenId)
 methodId = 0x2d296bf1
 
-```javaScript
-params: [
-  {
-    from: '0xb60e8dd61c5d32be8058bb8eb970870f07233155',//钱包地址
-    to: '0x941cbe144ee720cf99a37ab2efd738148d517685',//合约地址
-    data: '0x2d296bf1.............'//参考http://cw.hubwiz.com/card/c/web3.js-1.0/1/7/6/     http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
-  }
-];
+busdContract.approve(bidNFTContractAddress,-1)  
 
-ethereum
-  .request({
-    method: 'eth_sendTransaction',
-    params,
-  })
-  .then((result) => {
-    // The result varies by by RPC method.
-    // For example, this method will return a transaction hash hexadecimal string on success.
-  })
-  .catch((error) => {
-    // If the request fails, the Promise will reject with an error.
-  });
+Function: approve(address spender, uint256 amount)  
+
+```javaScript
+
+ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0xf72aa81038ce6170ae5041058597fd98af7ced44',//用改钱包地址购买
+      to: '0x01d72303e276bc4535519af73c1be4d51656c1c4',//BUSD合约地址
+data:'0x095ea7b3000000000000000000000000a7222b1d61facf5fe59c07363fef4345b537f1a9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
 
 ```
+
+
+Function: buyToken(uint256 _tokenId)  
+
+```javaScript
+
+ ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0xf72aa81038ce6170ae5041058597fd98af7ced44',//用改钱包地址购买
+      to: '0xa7222b1d61facf5fe59c07363fef4345b537f1a9',//bidNFT Contract Address
+data:'0x2d296bf10000000000000000000000000000000000000000000000000000000000000004'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+```
+
 
 
 卖NFT（设置价格,挂单）方法: readyToSellToken(uint256 _tokenId, uint256 _price)
 methodId = 0x523a57cf
 
+NFTContract.approve(bidContractAddress,tokenId)  
+
+Function: approve(address to, uint256 tokenId)  
+
+```javaScript
+
+ ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
+      to: '0x8a78d7013703d45947d6710449825697677b0342',// NFTContract address
+data:'0x095ea7b3000000000000000000000000a7222b1d61facf5fe59c07363fef4345b537f1a90000000000000000000000000000000000000000000000000000000000000004'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+```
+
+readyToSellToken(uint256 _tokenId, uint256 _price)  
+
+```javaScript
+
+ ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
+      to: '0xa7222b1d61facf5fe59c07363fef4345b537f1a9',//bid NFT cotract Address
+data:'0x523a57cf00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000006bc75e2d63100000'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+```
+
 
 取消卖单 方法: CancelSellToken(uint256 _tokenId)
 methodId = 0x9a9d9a5a
+
+
+```javaScript
+
+ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
+      to: '0xa7222b1d61facf5fe59c07363fef4345b537f1a9',//bid NFT cotract Address
+data:'0xb84eb76a0000000000000000000000000000000000000000000000000000000000000004'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+```
+
 
 
 ### 6.NFT市场，可以根据类型筛选（尔衡/浩洋）
@@ -510,46 +599,42 @@ onSale=false说明这个NFT没有挂单
 
 ### 附录
 ####1.测试合约地址
-+ Pixel合约地址
++ Pixel合约地址  
+
 0xb59efd0f19fb9e9cb32d3e84bebec5ca4144c95e
 
-+ Canvas合约地址
++ Canvas合约地址  
+
 0xcd5a398f67b95670caf38f58078719419ab9ee0e
 
-+ 创建NFT合约地址（LibertyNFT）
-0x2baf539bc0916d600bc314e302a926ff53f2af64
++ 创建NFT合约地址（LibertyNFT）  
 
-+ 挂单NFT合约地址
-0x941cbe144ee720cf99a37ab2efd738148d517685
+0x8a78d7013703d45947d6710449825697677b0342
 
-+ BidNFT
-0xc0fc8e20a7a84441d6a2163d18ba93f34905a94e
++ BidNFT  
 
-+ 空投合约地址
+0xa7222b1d61facf5fe59c07363fef4345b537f1a9
+
++ 空投合约地址  
+
 ？
 
-+ 购买Pixel合约地址
++ 购买Pixel合约地址  
+
 ？
 
-+ 旷池合约地址
++ 旷池合约地址  
+
 ？
 
-+ BUSD合约地址
++ BUSD合约地址  
+
 0x01d72303e276bc4535519af73c1be4d51656c1c4
 
 
 ####2.正式合约地址
 
 
-
-1.pixel.approve(NFTContractAddress)
-
-from： myaddress
-to： pixel_contractAddress
-approve(NFTContractAddress,-1)
-
-
-2.NFTContractAddress.mint()
 
 
 

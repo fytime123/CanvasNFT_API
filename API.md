@@ -3,6 +3,22 @@
 ### 1.Pixel销售页面信息（Wayne）
 > 1.1 剩余和已销售信息 + Key Metrics信息  
 
+可购买的PIXEL余额：
+```javascript
+ethereum.request({
+  method: 'eth_call',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//钱包地址
+      to: '0x7def6961f3c752c83ecf3947deb5c71d65f33426',//Pixel合约地址
+      data:'0xd8a54360'
+    },
+  ],
+})
+.then((totalRemain) => console.log(totalRemain))
+.catch((error) => console.error);
+```
+
 从服务端获取数据为：
 ```json
 {
@@ -23,6 +39,46 @@
 
 输入参数：fromAddress,pixel数量
 需要知道合约地址，及其合约方法
+第一步：同意授权DAI订购PIXEL
+Function: approve(address usr, uint256 amount)
+MethodID: 0x095ea7b3
+[0]:  0000000000000000000000007def6961f3c752c83ecf3947deb5c71d65f33426
+[1]:  ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+```javascript
+ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//钱包地址
+      to: '0x668de74b03a5b5a370ca189192bb8c63e386bdd4',//DAI 合约地址
+data:'0x095ea7b30000000000000000000000007def6961f3c752c83ecf3947deb5c71d65f33426ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+```
+
+第二步：购买
+Function: purchase(uint256 amount)
+MethodID: 0xefef39a1
+[0]:  0000000000000000000000000000000000000000000000000000000000000064
+
+```javascript
+ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//钱包地址
+      to: '0x7def6961f3c752c83ecf3947deb5c71d65f33426',//Pixel合约地址
+      data:'0xefef39a10000000000000000000000000000000000000000000000000000000000000064' //订购数量
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+```
+
 
 ### 2.创建NFT接口（尔衡/浩洋）
 > 2.1上传图片到ipfs接口  

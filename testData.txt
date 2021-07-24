@@ -200,3 +200,82 @@ data:'0x2d296bf10000000000000000000000000000000000000000000000000000000000000004
 
 
 ====================================buyToken end====================================================
+
+
+
+
+
+//get pixel
+====================================Get Pixel by DAI start==========================================
+Function: approve(address usr, uint256 wad)
+
+MethodID: 0x095ea7b3
+[0]:  0000000000000000000000007def6961f3c752c83ecf3947deb5c71d65f33426
+[1]:  ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+0x095ea7b30000000000000000000000007def6961f3c752c83ecf3947deb5c71d65f33426ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+//0x7def6961f3c752c83ecf3947deb5c71d65f33426  //Pixel合约地址
+
+ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//钱包地址
+      to: '0x668de74b03a5b5a370ca189192bb8c63e386bdd4',//DAI 合约地址
+data:'0x095ea7b30000000000000000000000007def6961f3c752c83ecf3947deb5c71d65f33426ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+
+
+
+
+Function: purchase(uint256 amount) ***
+
+MethodID: 0xefef39a1
+[0]:  0000000000000000000000000000000000000000000000000000000000000064
+
+0xefef39a10000000000000000000000000000000000000000000000000000000000000064
+
+ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
+      to: '0x7def6961f3c752c83ecf3947deb5c71d65f33426',//Pixel合约地址
+data:'0xefef39a10000000000000000000000000000000000000000000000000000000000000064'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+
+====================================Get Pixel by DAI end============================================
+
+
+
+
+====================================Get Pixel totalRemaining start==================================
+
+
+ethereum.request({
+  method: 'eth_call',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
+      to: '0x7def6961f3c752c83ecf3947deb5c71d65f33426',//Pixel合约地址
+      data:'0xd8a54360'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+
+
+====================================Get Pixel totalRemaining end==================================

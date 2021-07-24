@@ -35,15 +35,15 @@ ethereum.request({
 }
 ```
 
-> 1.2购买Pixel合约接口  
+> 1.2购买Pixel合约接口    
 
-输入参数：fromAddress,pixel数量
-需要知道合约地址，及其合约方法
-第一步：同意授权DAI订购PIXEL
+第一步：同意授权DAI订购PIXEL  
+
 Function: approve(address usr, uint256 amount)
 MethodID: 0x095ea7b3
 [0]:  0000000000000000000000007def6961f3c752c83ecf3947deb5c71d65f33426
-[1]:  ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+[1]:  ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff  
+
 ```javascript
 ethereum.request({
   method: 'eth_sendTransaction',
@@ -59,10 +59,12 @@ data:'0x095ea7b30000000000000000000000007def6961f3c752c83ecf3947deb5c71d65f33426
 .catch((error) => console.error);
 ```
 
-第二步：购买
+第二步：购买  
+
 Function: purchase(uint256 amount)
 MethodID: 0xefef39a1
-[0]:  0000000000000000000000000000000000000000000000000000000000000064
+[0]:  0000000000000000000000000000000000000000000000000000000000000064  
+
 
 ```javascript
 ethereum.request({

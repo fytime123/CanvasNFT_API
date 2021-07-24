@@ -41,8 +41,9 @@ ethereum.request({
 
 Function: approve(address usr, uint256 amount)
 MethodID: 0x095ea7b3
-[0]:  0000000000000000000000007def6961f3c752c83ecf3947deb5c71d65f33426
-[1]:  ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff  
+[0]:  0000000000000000000000007def6961f3c752c83ecf3947deb5c71d65f33426    
+
+[1]:  ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff    
 
 ```javascript
 ethereum.request({
@@ -61,8 +62,10 @@ data:'0x095ea7b30000000000000000000000007def6961f3c752c83ecf3947deb5c71d65f33426
 
 第二步：购买  
 
-Function: purchase(uint256 amount)
-MethodID: 0xefef39a1
+Function: purchase(uint256 amount)  
+
+MethodID: 0xefef39a1  
+
 [0]:  0000000000000000000000000000000000000000000000000000000000000064  
 
 

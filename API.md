@@ -84,7 +84,60 @@ ethereum.request({
 })
 .then((txHash) => console.log(txHash))
 .catch((error) => console.error);
-```
+```   
+
+
+
+如果第一步前面已经approve了，可以查询  
+
+查询DAI的ABI方法为：  
+```json
+{
+    "inputs":[
+        {
+            "internalType":"address",
+            "name":"owner",
+            "type":"address"
+        },
+        {
+            "internalType":"address",
+            "name":"spender",
+            "type":"address"
+        }
+    ],
+    "name":"allowance",
+    "outputs":[
+        {
+            "internalType":"uint256",
+            "name":"",
+            "type":"uint256"
+        }
+    ],
+    "stateMutability":"view",
+    "type":"function"
+}
+```   
+
+
+js调用方法：  
+
+```javascript
+
+ethereum.request({
+  method: 'eth_call',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//我的钱包地址
+      to: '0x668de74b03a5b5a370ca189192bb8c63e386bdd4',//dai合约地址
+//data第一个参数为我的钱包地址，第二个参数为pixel合约地址
+      data:'0xdd62ed3e00000000000000000000000041fea2d4efef108f6495b311dad5e2b21c23b4ee0000000000000000000000007def6961f3c752c83ecf3947deb5c71d65f33426'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+```   
 
 
 ### 2.创建NFT接口（尔衡/浩洋）

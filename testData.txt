@@ -207,6 +207,7 @@ data:'0x2d296bf10000000000000000000000000000000000000000000000000000000000000004
 
 //get pixel
 ====================================Get Pixel by DAI start==========================================
+Dai合约方法：
 Function: approve(address usr, uint256 wad)
 
 MethodID: 0x095ea7b3
@@ -233,7 +234,7 @@ data:'0x095ea7b30000000000000000000000007def6961f3c752c83ecf3947deb5c71d65f33426
 
 
 
-
+Pixel合约方法：
 Function: purchase(uint256 amount) ***
 
 MethodID: 0xefef39a1
@@ -279,3 +280,49 @@ ethereum.request({
 
 
 ====================================Get Pixel totalRemaining end==================================
+
+
+
+====================================check dai approve start==========================================
+{
+        "inputs":[
+            {
+                "internalType":"address",
+                "name":"owner",
+                "type":"address"
+            },
+            {
+                "internalType":"address",
+                "name":"spender",
+                "type":"address"
+            }
+        ],
+        "name":"allowance",
+        "outputs":[
+            {
+                "internalType":"uint256",
+                "name":"",
+                "type":"uint256"
+            }
+        ],
+        "stateMutability":"view",
+        "type":"function"
+    }
+
+
+
+ethereum.request({
+  method: 'eth_call',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
+      to: '0x668de74b03a5b5a370ca189192bb8c63e386bdd4',//dai合约地址
+      data:'0xdd62ed3e00000000000000000000000041fea2d4efef108f6495b311dad5e2b21c23b4ee0000000000000000000000007def6961f3c752c83ecf3947deb5c71d65f33426'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
+
+
+====================================check dai approve end===========================================

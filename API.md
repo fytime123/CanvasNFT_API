@@ -3,7 +3,25 @@
 ### 1.Pixel销售页面信息（Wayne）
 > 1.1 剩余和已销售信息 + Key Metrics信息  
 
-可购买的PIXEL余额：
+PIXEL的供用总量：用pixel合约的totalSupply()方法查询    
+
+```javascript
+ethereum.request({
+  method: 'eth_call',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//钱包地址
+      to: '0x7def6961f3c752c83ecf3947deb5c71d65f33426',//Pixel合约地址
+      data:'0x18160ddd'
+    },
+  ],
+})
+.then((totalRemain) => console.log(totalRemain))
+.catch((error) => console.error);
+```
+
+可购买的PIXEL余额：用pixel合约的totalRemaining()方法查询  
+
 ```javascript
 ethereum.request({
   method: 'eth_call',
@@ -18,6 +36,8 @@ ethereum.request({
 .then((totalRemain) => console.log(totalRemain))
 .catch((error) => console.error);
 ```
+
+
 
 从服务端获取数据为：
 ```json

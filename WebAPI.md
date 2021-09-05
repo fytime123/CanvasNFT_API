@@ -1,6 +1,6 @@
 1.Restful API接口
 1.1获取图片和NFT信息最新更新时间
-http://host/nftcanvas/canvas_time
+http://host/nftcanvas/api/canvas_time
 
 result:
 ```json
@@ -13,7 +13,7 @@ result:
 
 1.2获取NFT信息
 获取分类为5的NFT
-http://host/nftcanvas/nft?type=5
+http://host/nftcanvas/api/nft?type=5
 ```json
 {
     "code": 0,
@@ -48,7 +48,7 @@ http://host/nftcanvas/nft?type=5
 ```   
 
 获取所有的NFT
-http://host/nftcanvas/nft?type=   
+http://host/nftcanvas/api/nft?type=   
 
 
 

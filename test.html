@@ -5,6 +5,34 @@
     <title>测试连接钱包</title>
 <!--    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>-->
     <script>
+        window.addEventListener('DOMContentLoaded', connectStateListener);
+
+        function connectStateListener (){
+
+
+                const value = ethereum.isConnected();
+                console.log(value)
+
+                ethereum
+                  .request({ method: 'eth_accounts' })
+                  .then(handleConnected)
+                  .catch((err) => {
+                        console.error(err);
+                  });
+
+
+        }
+
+        function handleConnected(connect){
+                console.log(connect)
+                const value = ethereum.isConnected();
+                console.log(value)
+                //testWallet()
+                const showAccount = document.querySelector('.showAccount');
+                  showAccount.innerHTML = connect[0];
+
+        }
+
         function testWallet() {
 
             if (typeof window.ethereum !== 'undefined') {
@@ -12,6 +40,29 @@
             }
 
             //ethereum.request({ method: 'eth_requestAccounts' });
+
+            const onClickConnect = async () => {
+              try {
+                // Will open the MetaMask UI
+                // You should disable this button while the request is pending!
+                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                  const account = accounts[0];
+
+                  const showAccount = document.querySelector('.showAccount');
+                  showAccount.innerHTML = account;
+
+
+                  const value = ethereum.isConnected();
+                console.log("====>"+value)
+
+              } catch (error) {
+                console.error(error);
+              }
+            };
+            onClickConnect();
+
+
+            //console.log(onClickConnect);
 
             const ethereumButton = document.querySelector('.enableEthereumButton');
             ethereumButton.addEventListener('click', () => {
@@ -26,24 +77,43 @@
 
           const showAccount = document.querySelector('.showAccount');
           showAccount.innerHTML = account;
+          //getBalance(account);
           send(account)
         }
 
 function send(account){
- ethereum.request({
-  method: 'eth_sendTransaction',
+ethereum.request({
+  method: 'eth_call',
   params: [
     {
-      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
-      to: '0xa770814c47f42c86ae52f33428dc9a042429e5d9',// NFT合约地址
-data:'0xda8438ac000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005068747470733a2f2f676174657761792e70696e6174612e636c6f75642f697066732f516d564a4746354d73476b59426544634c78474553534e36653559506258346f466f4d6936487a356f4b3461526900000000000000000000000000000000'
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//我的钱包地址
+      to: '0x668de74b03a5b5a370ca189192bb8c63e386bdd4',//dai合约地址
+//data第一个参数为我的钱包地址，第二个参数为bidNFT合约地址
+      data:'0xdd62ed3e00000000000000000000000041fea2d4efef108f6495b311dad5e2b21c23b4ee0000000000000000000000003573846c388e009ac8d5e89edf2523efa6f04d3f'
     },
   ],
 })
 .then((txHash) => console.log(txHash))
 .catch((error) => console.error);
 
-        }
+    }
+
+        // 6.1 查询token余额:
+ async function getBalance(account) {
+          const amount = await ethereum.request({
+           method: 'eth_call',
+           params: [{
+             from: account,
+             to: '0x7def6961f3c752c83ecf3947deb5c71d65f33426', // 代币地址（智能合约地址）
+             data: '0x70a08231000000000000000000000000' + account.substr(2).toLowerCase()
+            },
+            "latest"
+           ]
+          });
+
+           console.log(amount);
+
+ }
 
 
     </script>
@@ -56,8 +126,8 @@ data:'0xda8438ac0000000000000000000000000000000000000000000000000000000000000002
 <h2>Account: <span class="showAccount"></span></h2>
 <button class="sendEthButton btn">Send Eth</button>
 
-<blockquote class="twitter-tweet"><p lang="zh" dir="ltr">我的第二条推文</p>&mdash; alpha.liu (@alphaliu16) <a href="https://twitter.com/alphaliu16/status/1419670001758339075?ref_src=twsrc%5Etfw">July 26, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<blockquote class="twitter-tweet"><p lang="zh" dir="ltr">第一条推特hhhhh</p>&mdash; alpha.liu (@alphaliu16) <a href="https://twitter.com/alphaliu16/status/1419669422914953223?ref_src=twsrc%5Etfw">July 26, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!--<blockquote class="twitter-tweet"><p lang="zh" dir="ltr">我的第二条推文</p>&mdash; alpha.liu (@alphaliu16) <a href="https://twitter.com/alphaliu16/status/1419670001758339075?ref_src=twsrc%5Etfw">July 26, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
+<!--<blockquote class="twitter-tweet"><p lang="zh" dir="ltr">第一条推特hhhhh</p>&mdash; alpha.liu (@alphaliu16) <a href="https://twitter.com/alphaliu16/status/1419669422914953223?ref_src=twsrc%5Etfw">July 26, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
 </body>
 </html>
 

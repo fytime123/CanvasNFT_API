@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>测试连接钱包</title>
-<!--    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>-->
+    <!--    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>-->
     <script>
         window.addEventListener('DOMContentLoaded', connectStateListener);
 
@@ -61,7 +61,6 @@
             };
             onClickConnect();
 
-
             //console.log(onClickConnect);
 
             const ethereumButton = document.querySelector('.enableEthereumButton');
@@ -77,101 +76,26 @@
 
           const showAccount = document.querySelector('.showAccount');
           showAccount.innerHTML = account;
-          //getBalance(account);
-          getSign(account);
-          //send(account)
+          send(account)
         }
 
     function send(account){
-        ethereum.request({
-          method: 'eth_call',
-          params: [
-            {
-              from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//我的钱包地址
-              to: '0x668de74b03a5b5a370ca189192bb8c63e386bdd4',//dai合约地址
-        //data第一个参数为我的钱包地址，第二个参数为bidNFT合约地址
-              data:'0xdd62ed3e00000000000000000000000041fea2d4efef108f6495b311dad5e2b21c23b4ee0000000000000000000000003573846c388e009ac8d5e89edf2523efa6f04d3f'
-            },
-          ],
-        })
-        .then((txHash) => console.log(txHash))
-        .catch((error) => console.error);
-
+            ethereum.request({
+              method: 'eth_sendTransaction',
+              params: [
+                {
+                  from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//用户自己的钱包地址
+                  to: '0xd13c6eaa1fb05b41046c886db46a0131c05f9b68',//创建NFT合约地址
+                  value:'0x5af3107a4000',//0.0001ETH
+                  data:'0xf382555e00000000000000000000000041fea2d4efef108f6495b311dad5e2b21c23b4ee00000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000002580000000000000000000000000000000000000000000000000000000000000258000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000022222000000000000000000000000000000000000000000000000000000000000'
+                  //data的参数 mint("0x41fea2d4efef108f6495b311dad5e2b21c23b4ee",'""',600,600,10,10)
+                  //参考 http://cw.hubwiz.com/card/c/web3.js-1.0/1/7/6/        http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
+                },
+              ],
+            })
+            .then((txHash) => console.log(txHash))
+            .catch((error) => console.error)
     }
-
-        // 6.1 查询token余额:
- async function getBalance(account) {
-          const amount = await ethereum.request({
-           method: 'eth_call',
-           params: [{
-             from: account,
-             to: '0x7def6961f3c752c83ecf3947deb5c71d65f33426', // 代币地址（智能合约地址）
-             data: '0x70a08231000000000000000000000000' + account.substr(2).toLowerCase()
-            },
-            "latest"
-           ]
-          });
-
-           console.log(amount);
-
- }
-
-
-     async function getSign(account) {
-
-            const msgParams = JSON.stringify({
-                    domain: {
-                      // Defining the chain aka Rinkeby testnet or Ethereum Main Net
-                      chainId: 3,
-                      // Give a user friendly name to the specific contract you are signing for.
-                      name: 'Ether Mail',
-                      // If name isn't enough add verifying contract to make sure you are establishing contracts with the proper entity
-                      verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
-                      // Just let's you know the latest version. Definitely make sure the field name is correct.
-                      version: '1',
-                    },
-
-                    // Defining the message signing data content.
-    message: {
-      /*
-       - Anything you want. Just a JSON Blob that encodes the data you want to send
-       - No required fields
-       - This is DApp Specific
-       - Be as explicit as possible when building out the message schema.
-      */
-      contents: 'Hello, Bob!',
-    },
-    // Refers to the keys of the *types* object below.
-    primaryType: 'Mail',
-    types: {
-      // TODO: Clarify if EIP712Domain refers to the domain the contract is hosted on
-      EIP712Domain: [
-        { name: 'name', type: 'string' },
-        { name: 'version', type: 'string' },
-        { name: 'chainId', type: 'uint256' },
-        { name: 'verifyingContract', type: 'address' },
-      ],
-      // Refer to PrimaryType
-      Mail: [
-        { name: 'contents', type: 'string' }
-      ],
-    },
-  });
-
-              console.log(msgParams);
-              var params = [msgParams, account];//[account, msgParams];
-              var method = 'personal_sign';
-
-             const amount = await ethereum.request({
-               method: method,
-               params: params
-              });
-
-              console.log(amount);
-     }
-
-
-
 
 
     </script>

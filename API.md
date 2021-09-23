@@ -188,28 +188,54 @@ https://gateway.pinata.cloud/ipfs/QmXQt3AGb2QUzVTGLvXfeg7WJN13GGqiUjM3zL1WvUs3UL
 
 > 2.3调用合约方法创建nft
 
-要创建NFT需要您钱包的Pixel合约同意NFT合约消耗您的Pixel
-方法approve(address nftContractAddress,uint256 tokenId)
+
+测试网合约地址: https://kovan.etherscan.io/address/0xd13c6eaa1fb05b41046c886db46a0131c05f9b68#writeContract
+方法: mint(address to, string memory_tokenURI, uint256 startX, uint256 startY, uint256 xLength, uint256 yLength) 参数:
+methodId = 0xf382555e  
+
+ABI
 ```javaScript
- ethereum.request({
-  method: 'eth_sendTransaction',
-  params: [
-    {
-      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//用户自己的钱包地址
-      to: '0x7def6961f3c752c83ecf3947deb5c71d65f33426',//Pixel合约地址
-       data:'0x095ea7b3000000000000000000000000a770814c47f42c86ae52f33428dc9a042429e5d9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
-    },//8a78d7013703d45947d6710449825697677b0342为创建NFT合约地址  方法approve("0xa770814c47f42c86ae52f33428dc9a042429e5d9",-1)
-  ],
-})
-.then((txHash) => console.log(txHash))
-.catch((error) => console.error);
+{
+        "inputs":[
+            {
+                "internalType":"address",
+                "name":"to",
+                "type":"address"
+            },
+            {
+                "internalType":"string",
+                "name":"_tokenURI",
+                "type":"string"
+            },
+            {
+                "internalType":"uint256",
+                "name":"startX",
+                "type":"uint256"
+            },
+            {
+                "internalType":"uint256",
+                "name":"startY",
+                "type":"uint256"
+            },
+            {
+                "internalType":"uint256",
+                "name":"xLength",
+                "type":"uint256"
+            },
+            {
+                "internalType":"uint256",
+                "name":"yLength",
+                "type":"uint256"
+            }
+        ],
+        "name":"mint",
+        "outputs":[
+
+        ],
+        "stateMutability":"payable",
+        "type":"function"
+    }
 ```
-
-
-测试网合约地址: https://ropsten.etherscan.io/address/0x2BaF539bC0916D600bC314E302A926ff53F2Af64#code
-方法: mint(address to, string memory_tokenURI, uint256 index, uint256 startX, uint256 startY, uint256 xLength, uint256 yLength) 参数:
-methodId = 0xfb8e04c8
-
 ```javaScript
 
 ethereum.request({
@@ -217,9 +243,10 @@ ethereum.request({
   params: [
     {
       from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//用户自己的钱包地址
-      to: '0xa770814c47f42c86ae52f33428dc9a042429e5d9',//创建NFT合约地址
-      data:'0xfb8e04c800000000000000000000000041fea2d4efef108f6495b311dad5e2b21c23b4ee00000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c800000000000000000000000000000000000000000000000000000000000000c8000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000022222000000000000000000000000000000000000000000000000000000000000'
-      //data的参数 mint("0x41fea2d4efef108f6495b311dad5e2b21c23b4ee",'""',0,200,200,10,10) 
+      to: '0xd13c6eaa1fb05b41046c886db46a0131c05f9b68',//创建NFT合约地址
+      value:'0x5af3107a4000',//0.0001ETH
+      data:'0xf382555e00000000000000000000000041fea2d4efef108f6495b311dad5e2b21c23b4ee00000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c800000000000000000000000000000000000000000000000000000000000000c8000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000022222000000000000000000000000000000000000000000000000000000000000'
+      //data的参数 mint("0x41fea2d4efef108f6495b311dad5e2b21c23b4ee",'""',0,200,200,10,10)
       //参考 http://cw.hubwiz.com/card/c/web3.js-1.0/1/7/6/        http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
     },
   ],
@@ -258,8 +285,8 @@ canvasContract.approve(nftContractAddress,-1)
   params: [
     {
       from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
-      to: '0x668de74b03a5b5a370ca189192bb8c63e386bdd4',//canvas合约地址  或者 DAI合约地址
-data:'0x095ea7b3000000000000000000000000a770814c47f42c86ae52f33428dc9a042429e5d9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+      to: '0x7de10783fd90e9351aff82dcf3ef2538139536ae',//canvas合约地址  或者 DAI合约地址
+data:'0x095ea7b3000000000000000000000000d13c6eaa1fb05b41046c886db46a0131c05f9b68ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
     },
   ],
 })
@@ -269,8 +296,8 @@ data:'0x095ea7b3000000000000000000000000a770814c47f42c86ae52f33428dc9a042429e5d9
 ```
 
 
-方法: setTokenURI(uint256 tokenId, string memory tokenURI, bool blur) blur传flase
-methodId = 0xda8438ac
+方法: setTokenURI(uint256 tokenId, string memory tokenURI, bool fraud,bool nsfw) fraud、nsfw传flase
+methodId = 0x7f908285
 
 ```javaScript
  ethereum.request({
@@ -278,8 +305,8 @@ methodId = 0xda8438ac
   params: [
     {
       from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
-      to: '0xa770814c47f42c86ae52f33428dc9a042429e5d9',// NFT合约地址
-data:'0xda8438ac000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005068747470733a2f2f676174657761792e70696e6174612e636c6f75642f697066732f516d564a4746354d73476b59426544634c78474553534e36653559506258346f466f4d6936487a356f4b3461526900000000000000000000000000000000'
+      to: '0xd13c6eaa1fb05b41046c886db46a0131c05f9b68',// NFT合约地址
+data:'0x7f908285000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005068747470733a2f2f676174657761792e70696e6174612e636c6f75642f697066732f516d564a4746354d73476b59426544634c78474553534e36653559506258346f466f4d6936487a356f4b3461526900000000000000000000000000000000'
     },
   ],
 })
@@ -302,26 +329,24 @@ data:'0xda8438ac0000000000000000000000000000000000000000000000000000000000000002
 
 > 4.1通过合约中的方法获取所有的NFT信息 ***(价格信息怎么获取？？？？？？？)*** ==>参看（10.1 第2条）
 
-访问Subgraph:  https://api.thegraph.com/subgraphs/name/erhenglu/libertynft
+访问Subgraph:  https://api.studio.thegraph.com/query/7102/zubertest_canvasnft/v0.12.0_kovan
 Example Query:
 ```graphql
 {
-  canvasNFTs{
-    id
-    tokenId
-    index
-    startX
-    startY
-    xLength
-	yLength
-	createTime
-	updateTime
-	blur
-	govCounter
-	unsafe
-	url
-	owner
-  }
+  canvasNFTInfos{
+              id
+              tokenId
+              owner
+              startX
+              startY
+              xLength
+              yLength
+              createTime
+              updateTime
+              fraud
+              nsfw
+              tokenURI
+          }
 }
 ```
 
@@ -381,8 +406,8 @@ ethereum.request({
   params: [
     {
       from: '0xf72aa81038ce6170ae5041058597fd98af7ced44',//用改钱包地址购买
-      to: '0x668de74b03a5b5a370ca189192bb8c63e386bdd4',//DAI合约地址
-data:'0x095ea7b30000000000000000000000003573846c388e009ac8d5e89edf2523efa6f04d3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+      to: '0x7de10783fd90e9351aff82dcf3ef2538139536ae',//DAI合约地址
+data:'0x095ea7b3000000000000000000000000c81c4ed318ccc96c3ade6d27c02bf647ddd5e1fbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
     },
   ],
 })
@@ -401,7 +426,7 @@ Function: buyToken(uint256 _tokenId)
   params: [
     {
       from: '0xf72aa81038ce6170ae5041058597fd98af7ced44',//用改钱包地址购买
-      to: '0x3573846c388e009ac8d5e89edf2523efa6f04d3f',//bidNFT Contract Address
+      to: '0xc81c4ed318ccc96c3ade6d27c02bf647ddd5e1fb',//bidNFT Contract Address
 data:'0x2d296bf10000000000000000000000000000000000000000000000000000000000000004'
     },
   ],
@@ -427,8 +452,8 @@ Function: approve(address to, uint256 tokenId)
   params: [
     {
       from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
-      to: '0xa770814c47f42c86ae52f33428dc9a042429e5d9',// NFTContract address
-data:'0x095ea7b30000000000000000000000003573846c388e009ac8d5e89edf2523efa6f04d3f0000000000000000000000000000000000000000000000000000000000000004'
+      to: '0xd13c6eaa1fb05b41046c886db46a0131c05f9b68',// NFTContract address
+data:'0x095ea7b3000000000000000000000000c81c4ed318ccc96c3ade6d27c02bf647ddd5e1fb0000000000000000000000000000000000000000000000000000000000000004'
     },
   ],
 })
@@ -446,7 +471,7 @@ readyToSellToken(uint256 _tokenId, uint256 _price)
   params: [
     {
       from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
-      to: '0x3573846c388e009ac8d5e89edf2523efa6f04d3f',//bid NFT cotract Address
+      to: '0xc81c4ed318ccc96c3ade6d27c02bf647ddd5e1fb',//bid NFT cotract Address
 data:'0x523a57cf00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000006bc75e2d63100000'
     },
   ],
@@ -468,7 +493,7 @@ ethereum.request({
   params: [
     {
       from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
-      to: '0x3573846c388e009ac8d5e89edf2523efa6f04d3f',//bid NFT cotract Address
+      to: '0xc81c4ed318ccc96c3ade6d27c02bf647ddd5e1fb',//bid NFT cotract Address
 data:'0xb84eb76a0000000000000000000000000000000000000000000000000000000000000004'
     },
   ],
@@ -491,25 +516,23 @@ data:'0xb84eb76a0000000000000000000000000000000000000000000000000000000000000004
 
 ### 7.查询地址的NFT信息（尔衡/浩洋）
 > 7.1通过合约中的方法获取address下的所有NFT
-访问Subgraph:  https://api.thegraph.com/subgraphs/name/erhenglu/libertynft
+访问Subgraph:  https://api.studio.thegraph.com/query/7102/zubertest_canvasnft/v0.12.0_kovan
 Example Query:
 ```graphql
 {
-  canvasNFTs(where: { owner: "0x799621c508498bb0a6482b6596a3a2e908bcbbba" }){
-    id
-    tokenId
-    index
-    startX
-    startY
-    xLength
-	yLength
-	createTime
-	updateTime
-	blur
-	govCounter
-	unsafe
-	url
-	owner
+  canvasNFTInfos(where: { owner: "0x799621c508498bb0a6482b6596a3a2e908bcbbba" }){
+                id
+                tokenId
+                owner
+                startX
+                startY
+                xLength
+                yLength
+                createTime
+                updateTime
+                fraud
+                nsfw
+                tokenURI
   }
 }
 ```
@@ -745,11 +768,11 @@ onSale=false说明这个NFT没有挂单
 
 + 创建NFT合约地址（LibertyNFT）  
 
-0xa770814c47f42c86ae52f33428dc9a042429e5d9    //0x8a78d7013703d45947d6710449825697677b0342
+0xd13c6eaa1fb05b41046c886db46a0131c05f9b68      //0xa770814c47f42c86ae52f33428dc9a042429e5d9    //0x8a78d7013703d45947d6710449825697677b0342
 
 + BidNFT  
 
-0x3573846c388e009ac8d5e89edf2523efa6f04d3f   //0xa7222b1d61facf5fe59c07363fef4345b537f1a9
+0xc81c4ed318ccc96c3ade6d27c02bf647ddd5e1fb     //0x3573846c388e009ac8d5e89edf2523efa6f04d3f   //0xa7222b1d61facf5fe59c07363fef4345b537f1a9
 
 + 空投合约地址  
 
@@ -765,7 +788,7 @@ onSale=false说明这个NFT没有挂单
 
 + DAI合约地址  
 
-0x668de74b03a5b5a370ca189192bb8c63e386bdd4   //0x01d72303e276bc4535519af73c1be4d51656c1c4
+0x7de10783fd90e9351aff82dcf3ef2538139536ae    //0x668de74b03a5b5a370ca189192bb8c63e386bdd4   //0x01d72303e276bc4535519af73c1be4d51656c1c4
 
 
 ####  2.正式合约地址

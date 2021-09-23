@@ -300,6 +300,39 @@ data:'0x095ea7b3000000000000000000000000d13c6eaa1fb05b41046c886db46a0131c05f9b68
 methodId = 0x7f908285
 
 ```javaScript
+{
+        "inputs":[
+            {
+                "internalType":"uint256",
+                "name":"tokenId",
+                "type":"uint256"
+            },
+            {
+                "internalType":"string",
+                "name":"_tokenURI",
+                "type":"string"
+            },
+            {
+                "internalType":"bool",
+                "name":"fraud",
+                "type":"bool"
+            },
+            {
+                "internalType":"bool",
+                "name":"nsfw",
+                "type":"bool"
+            }
+        ],
+        "name":"setTokenURI",
+        "outputs":[
+
+        ],
+        "stateMutability":"nonpayable",
+        "type":"function"
+    }
+```
+
+```javaScript
  ethereum.request({
   method: 'eth_sendTransaction',
   params: [

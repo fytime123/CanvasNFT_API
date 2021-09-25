@@ -73,7 +73,7 @@ result:
 ```
 
 1.4 用户收藏关注NFT（favorite），先钱包签名，然后提交到服务端接口
-http://host/nftcanvas/api/createNftPrice
+http://host/nftcanvas/api/sign
 
 POST方法
 request
@@ -98,7 +98,7 @@ result:
 
 
 1.5 用户投票投诉NFT，先钱包签名，然后提交到服务端接口
-http://host/nftcanvas/api/createNftPrice
+http://host/nftcanvas/api/sign
 
 POST方法
 request

@@ -100,6 +100,40 @@ ethereum.on('accountsChanged', handler: (accounts: Array<string>) => void);
 
 这意味着accountsChanged每当用户公开的帐户地址发生变化时都会发出。
 
+#### 3.5用户签名
+ //用户收藏msg
+ ```javaScript
+  const msgParams = JSON.stringify({
+            favorite:true,//去取消填false
+            tokenId:"4"
+  });
+
+  console.log(msgParams);
+  var params = [msgParams, account];//[account, msgParams];
+  var method = 'personal_sign';
+
+ const amount = await ethereum.request({
+   method: method,
+   params: params
+  });
+```
+
+ //用户投票签名
+ ```javaScript
+  const msgParams = JSON.stringify({
+            vote:1,//投票
+            tokenId:"4"
+  });
+
+  console.log(msgParams);
+  var params = [msgParams, account];//[account, msgParams];
+  var method = 'personal_sign';
+
+ const amount = await ethereum.request({
+   method: method,
+   params: params
+  });
+ ```
 
 ### 4.添加自定义RPC网络
 Add Network (Custom RPC) using Chainlist in the browser extension

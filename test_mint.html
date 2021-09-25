@@ -80,21 +80,18 @@
         }
 
     function send(account){
-            ethereum.request({
-              method: 'eth_sendTransaction',
-              params: [
-                {
-                  from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//用户自己的钱包地址
-                  to: '0xd13c6eaa1fb05b41046c886db46a0131c05f9b68',//创建NFT合约地址
-                  value:'0x5af3107a4000',//0.0001ETH
-                  data:'0xf382555e00000000000000000000000041fea2d4efef108f6495b311dad5e2b21c23b4ee00000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000002580000000000000000000000000000000000000000000000000000000000000258000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000022222000000000000000000000000000000000000000000000000000000000000'
-                  //data的参数 mint("0x41fea2d4efef108f6495b311dad5e2b21c23b4ee",'""',600,600,10,10)
-                  //参考 http://cw.hubwiz.com/card/c/web3.js-1.0/1/7/6/        http://www.jouypub.com/2018/1292c65cfbe128f290fb336d930d3bca/
-                },
-              ],
-            })
-            .then((txHash) => console.log(txHash))
-            .catch((error) => console.error)
+             ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
+      to: '0x7de10783fd90e9351aff82dcf3ef2538139536ae',//canvas合约地址  或者 DAI合约地址
+data:'0x095ea7b3000000000000000000000000d13c6eaa1fb05b41046c886db46a0131c05f9b68ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
     }
 
 

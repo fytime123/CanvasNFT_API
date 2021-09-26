@@ -20,42 +20,51 @@ POST方法：
 
 ```json
 {
+  "owner":"0x41fEa2D4eFEF108F6495B311daD5E2B21C23b4Ee",//我自己对NFT，如果只获取我自己对NFT就传；否则为null 或者不传；有owner就可以不传address了
   "address":"0x41fEa2D4eFEF108F6495B311daD5E2B21C23b4Ee",//有钱包地址，获取到的NFT信息中isMyFavorite对该钱包查询出来的，没有钱包地址isMyFavorite=false
-  "type":"5"//NFT分类type，不填该字段，获取全部NFT（user字段中的type对应）
+  "type":"5",//NFT分类type，不填该字段，获取全部NFT（user字段中的type对应）
+  "sortType": "sortByUpdateTime",//排序类型,不排序为null或者不传(sortByUpdateTime,sortByPriceRise,sortByPriceDesend,sortByFavorite,sortByCreateTime)
+  "page": 1,//1开始，第几页，有分页就有数值，否则为null 或者不传
+  "perPageCount": 20 //每页数量，有分页就传，否则为null 或者不传
 }
 ```  
 响应结果
 ```json
 {
     "code": 0,
-    "data": [
-        {
-            "contract": {
-                "id": "0x1",
-                "tokenId": "1",
-                "startX": 100,
-                "startY": 0,
-                "xLength": 100,
-                "yLength": 100,
-                "createTime": "1631606276",
-                "updateTime": "1631606276",
-                "nsfw": false,
-                "tokenURI": "https://gateway.pinata.cloud/ipfs/QmVJGF5MsGkYBeDcLxGESSN6e5YPbX4oFoMi6Hz5oK4aRi",
-                "owner": "0x54e44632a6eab63fa82a9b8a222911cf02f486f0",
-                "favoriteCount": 0,//收藏数量
-                "voteCount": 0,//投票数量
-                "myFavorite": false //0x41fEa2D4eFEF108F6495B311daD5E2B21C23b4Ee该用户是否收藏
-            },
-            "user": {
-                "id": 28,
-                "type": "5",
-                "title": "jack测试token",
-                "url": "http://saying-tech.cn",
-                "imageUrl": "https://gateway.pinata.cloud/ipfs//QmYCVqGworCiUPCQDYe6xzaZoLaA9m6mDHFm8NArec77gs",
-                "introduction": "测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试"
-            }
-        }
-    ]
+    "data":{
+            "page": 1,
+            "perPageCount": 20,
+             "count": 50,
+            "nfts":[
+                    {
+                        "contract": {
+                            "id": "0x1",
+                            "tokenId": "1",
+                            "startX": 100,
+                            "startY": 0,
+                            "xLength": 100,
+                            "yLength": 100,
+                            "createTime": "1631606276",
+                            "updateTime": "1631606276",
+                            "nsfw": false,
+                            "tokenURI": "https://gateway.pinata.cloud/ipfs/QmVJGF5MsGkYBeDcLxGESSN6e5YPbX4oFoMi6Hz5oK4aRi",
+                            "owner": "0x54e44632a6eab63fa82a9b8a222911cf02f486f0",
+                            "favoriteCount": 0,//收藏数量
+                            "voteCount": 0,//投票数量
+                            "myFavorite": false //0x41fEa2D4eFEF108F6495B311daD5E2B21C23b4Ee该用户是否收藏
+                        },
+                        "user": {
+                            "id": 28,
+                            "type": "5",
+                            "title": "jack测试token",
+                            "url": "http://saying-tech.cn",
+                            "imageUrl": "https://gateway.pinata.cloud/ipfs//QmYCVqGworCiUPCQDYe6xzaZoLaA9m6mDHFm8NArec77gs",
+                            "introduction": "测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试"
+                        }
+                    }
+                ]
+    }
 }
 ```   
 

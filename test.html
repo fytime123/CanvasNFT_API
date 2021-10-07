@@ -79,24 +79,23 @@
           showAccount.innerHTML = account;
           //getBalance(account);
           //getETHBalance(account);
-          getSign(account);
-          //send(account)
+          //getSign(account);
+          send(account)
         }
 
     function send(account){
-        ethereum.request({
-          method: 'eth_call',
-          params: [
-            {
-              from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',//我的钱包地址
-              to: '0x668de74b03a5b5a370ca189192bb8c63e386bdd4',//dai合约地址
-        //data第一个参数为我的钱包地址，第二个参数为bidNFT合约地址
-              data:'0xdd62ed3e00000000000000000000000041fea2d4efef108f6495b311dad5e2b21c23b4ee0000000000000000000000003573846c388e009ac8d5e89edf2523efa6f04d3f'
-            },
-          ],
-        })
-        .then((txHash) => console.log(txHash))
-        .catch((error) => console.error);
+ ethereum.request({
+  method: 'eth_sendTransaction',
+  params: [
+    {
+      from: '0x41fea2d4efef108f6495b311dad5e2b21c23b4ee',
+      to: '0xd13c6eaa1fb05b41046c886db46a0131c05f9b68',
+data:'0x095ea7b3000000000000000000000000c81c4ed318ccc96c3ade6d27c02bf647ddd5e1fb0000000000000000000000000000000000000000000000000000000000000004'
+    },
+  ],
+})
+.then((txHash) => console.log(txHash))
+.catch((error) => console.error);
 
     }
 

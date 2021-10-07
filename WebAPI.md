@@ -52,7 +52,11 @@ POST方法：
                             "owner": "0x54e44632a6eab63fa82a9b8a222911cf02f486f0",
                             "favoriteCount": 0,//收藏数量
                             "voteCount": 0,//投票数量
-                            "myFavorite": false //0x41fEa2D4eFEF108F6495B311daD5E2B21C23b4Ee该用户是否收藏
+                            "myFavorite": false, //0x41fEa2D4eFEF108F6495B311daD5E2B21C23b4Ee该用户是否收藏
+                            "price": "1000000000000000000",//销售价格
+                            "nftToken": "0x986b5587960b1512804421ad33305833e9327137",//nft合约地址
+                            "quoteToken": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",//price字段对应的币种
+                            "target": "" //不为空时，只有target地址能买
                         },
                         "user": {
                             "id": 28,
@@ -92,6 +96,7 @@ request
     "signature": "0xcc9418a65d9f7578d997e0ef52c2c10a583d51176333c11c60e8437b0159ed5a11f7b3ba1d8a8a64b07986d248d3f961e388f9a34748b1b03993c87b81cda2d71c", 
     "message": "{\"favorite\":true,\"tokenId\":\"4\"}", 
     "address": "0x41fEa2D4eFEF108F6495B311daD5E2B21C23b4Ee", 
+    "nftToken": "0x986b5587960b1512804421ad33305833e9327137", //指明是哪个NFT合约
     "tokenId": "4"
 }
 ```
@@ -117,6 +122,7 @@ request
     "signature": "0xcc9418a65d9f7578d997e0ef52c2c10a583d51176333c11c60e8437b0159ed5a11f7b3ba1d8a8a64b07986d248d3f961e388f9a34748b1b03993c87b81cda2d71c", 
     "message": "{\"vote\":1,\"tokenId\":\"4\"}", 
     "address": "0x41fEa2D4eFEF108F6495B311daD5E2B21C23b4Ee", 
+    "nftToken": "0x986b5587960b1512804421ad33305833e9327137", //指明是哪个NFT合约
     "tokenId": "4"
 }
 ```
@@ -170,6 +176,9 @@ result:
                         "favoriteCount": 0,//收藏数量
                         "voteCount": 0,//投票数量
                         "myFavorite": false //0x41fEa2D4eFEF108F6495B311daD5E2B21C23b4Ee该用户是否收藏
+                        "nftToken": "0x986b5587960b1512804421ad33305833e9327137",//nft合约地址
+                        "quoteToken": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",//price字段对应的币种
+                        "target": "" //不为空时，只有target地址能买
                     },
             "user": {
                 "id": 28,
@@ -214,6 +223,9 @@ result:
                         "favoriteCount": 0,//收藏数量
                         "voteCount": 0,//投票数量
                         "myFavorite": false //0x41fEa2D4eFEF108F6495B311daD5E2B21C23b4Ee该用户是否收藏
+                        "nftToken": "0x986b5587960b1512804421ad33305833e9327137",//nft合约地址
+                        "quoteToken": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",//price字段对应的币种
+                         "target": "" //不为空时，只有target地址能买
                      },
             "user": {
                 "id": 28,

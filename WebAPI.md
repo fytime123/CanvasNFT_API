@@ -136,6 +136,21 @@ result:
 ```
 
 
+1.6 统计钱包地址持有nft数量、像素和收藏数量
+http://host/nftcanvas//api/summary?address=0x54e44632a6eab63fa82a9b8a222911cf02f486f0
+result:
+```json
+{
+    "code": 0,
+    "data": {
+        "nftHeld": 1,
+        "pixelCount": 5000,
+        "favoriteCount": 0
+    }
+}
+```
+
+
 2.WebSocket接口
 2.1获取图片和NFT信息最新更新时间
 request:
